@@ -1,9 +1,9 @@
 import React from "react";
 
-import Toolbar from "./components/Navigation/Toolbar/Toolbar";
+import Layout from "./hoc/Layout/Layout";
 
 function App() {
-  return <Toolbar />;
+  return <Layout />;
 }
 
 export default App;
