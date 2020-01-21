@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 
-import classes from "./Layout.css";
+import classes from "./Layout.module.css";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 
@@ -26,6 +26,7 @@ class Layout extends Component {
         <SideDrawer
           open={this.state.showSideDrawer}
           closed={this.sideDrawerClosedHandler}
+          drawerToggleClicked={this.sideDrawerToggleHandler}
         />
         <main className={classes.Content}>{this.props.children}</main>
       </Fragment>

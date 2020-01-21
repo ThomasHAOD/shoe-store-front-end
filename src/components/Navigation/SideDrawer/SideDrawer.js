@@ -2,8 +2,9 @@ import React, { Fragment } from "react";
 
 // import Logo from '../../Logo/Logo';
 import NavigationItems from "../NavigationItems/NavigationItems";
-import classes from "./SideDrawer.css";
+import classes from "./SideDrawer.module.css";
 import Backdrop from "../../UI/Backdrop/Backdrop";
+import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
 
 const sideDrawer = props => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
@@ -15,6 +16,7 @@ const sideDrawer = props => {
       <Backdrop show={props.open} clicked={props.closed} />
       <div className={attachedClasses.join(" ")}>
         <nav>
+          <DrawerToggle clicked={props.drawerToggleClicked} />
           <NavigationItems />
         </nav>
       </div>
