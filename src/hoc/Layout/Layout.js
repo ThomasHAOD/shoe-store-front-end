@@ -3,7 +3,7 @@ import React, { Component, Fragment } from "react";
 import classes from "./Layout.module.css";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
-import Shoe from "../../components/Shoe/Shoe";
+import Shoes from "../../containers/Shoes/Shoes";
 
 class Layout extends Component {
   state = {
@@ -31,7 +31,7 @@ class Layout extends Component {
         />
         <main className={classes.Content}>
           {this.props.children}
-          <Shoe />
+          <Shoes />
         </main>
       </Fragment>
     );
