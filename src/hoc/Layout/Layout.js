@@ -4,6 +4,7 @@ import classes from "./Layout.module.css";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 import Shoes from "../../containers/Shoes/Shoes";
+import SelectedShoe from "../../containers/SelectedShoe/SelectedShoe";
 
 class Layout extends Component {
   state = {
@@ -31,7 +32,8 @@ class Layout extends Component {
         />
         <main className={classes.Content}>
           {this.props.children}
-          <Shoes />
+          {/* <Shoes /> */}
+          <SelectedShoe />
         </main>
       </Fragment>
     );

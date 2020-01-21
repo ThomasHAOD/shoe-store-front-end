@@ -1,0 +1,10 @@
+.SelectedShoe {
+  width: 90%;
+  height: 80%;
+  margin-top: 50px;
+  background: #ccc;
+  padding: 5px;
+  align-content: center;
+  text-align: center;
+  margin: auto;
+}

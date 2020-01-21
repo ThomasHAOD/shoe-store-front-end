@@ -4,13 +4,14 @@
   border: 1px solid #000;
 }
 
-.Shoe {
-  width: 80%;
+.SelectedShoe {
+  width: 90%;
+  height: 90%;
   display: block;
   flex-flow: column;
   margin: 10px auto;
   background: #ccc;
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #aaa;
   box-sizing: border-box;
   text-align: center;
