@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import DetailedShoe from "../../components/Shoe/DetailedShoe/DetailedShoe";
+import Styles from "../../components/Styles/Styles";
 import classes from "./SelectedShoe.module.css";
 
 export class SelectedShoe extends Component {
@@ -17,16 +18,20 @@ export class SelectedShoe extends Component {
   };
   render() {
     return (
-      <div className={classes.SelectedShoe}>
-        <DetailedShoe
-          name={this.state.name}
-          brand={this.state.brand}
-          color={this.state.color}
-          size={this.state.size}
-          reviewScore={this.state.reviewScore}
-          mens
-          kids
-        />
+      <div>
+        <div className={classes.SelectedShoeDetails}>
+          <DetailedShoe
+            name={this.state.name}
+            brand={this.state.brand}
+            color={this.state.color}
+            size={this.state.size}
+            reviewScore={this.state.reviewScore}
+            mens
+            kids
+          />
+        </div>
+
+        <Styles />
       </div>
     );
   }
