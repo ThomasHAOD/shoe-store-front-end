@@ -6,9 +6,9 @@ import NavigationItem from "./NavigationItem/NavigationItem";
 const navigationItems = props => {
   return (
     <ul className={classes.NavigationItems}>
-      <NavigationItem>Account</NavigationItem>
-      <NavigationItem>Basket</NavigationItem>
-      <NavigationItem>Sign In/Out</NavigationItem>
+      <NavigationItem link="/">Account</NavigationItem>
+      <NavigationItem link="/">Basket</NavigationItem>
+      <NavigationItem link="/">Sign In/Out</NavigationItem>
     </ul>
   );
 };

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import DetailedShoe from "../../components/Shoe/DetailedShoe/DetailedShoe";
 import Styles from "../../components/Styles/Styles";
+import HowDoesItFit from "../../components/HowDoesItFit/HowDoesItFit";
+import Button from "../../components/UI/Button/Button";
 import classes from "./SelectedShoe.module.css";
 
 export class SelectedShoe extends Component {
@@ -18,7 +20,7 @@ export class SelectedShoe extends Component {
   };
   render() {
     return (
-      <div>
+      <div className={classes.SelectedShoe}>
         <div className={classes.SelectedShoeDetails}>
           <DetailedShoe
             name={this.state.name}
@@ -30,7 +32,8 @@ export class SelectedShoe extends Component {
             kids
           />
         </div>
-
+        <Button btnType="Success">Add To Basket</Button>
+        <HowDoesItFit />
         <Styles />
       </div>
     );

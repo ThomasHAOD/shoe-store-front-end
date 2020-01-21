@@ -3,8 +3,6 @@ import React, { Component, Fragment } from "react";
 import classes from "./Layout.module.css";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
-import Shoes from "../../containers/Shoes/Shoes";
-import SelectedShoe from "../../containers/SelectedShoe/SelectedShoe";
 
 class Layout extends Component {
   state = {
@@ -30,11 +28,7 @@ class Layout extends Component {
           closed={this.sideDrawerClosedHandler}
           drawerToggleClicked={this.sideDrawerToggleHandler}
         />
-        <main className={classes.Content}>
-          {this.props.children}
-          {/* <Shoes /> */}
-          <SelectedShoe />
-        </main>
+        <main className={classes.Content}>{this.props.children}</main>
       </Fragment>
     );
   }
