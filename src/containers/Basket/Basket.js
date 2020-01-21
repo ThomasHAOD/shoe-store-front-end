@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 
-import Shoe from "../../components/Shoe/Shoe";
-
-export class Shoes extends Component {
+export class Basket extends Component {
   state = {
-    shoes: [
+    items: [
       {
         name: "Funky Trainer",
         image: "./placeholer",
@@ -29,23 +27,13 @@ export class Shoes extends Component {
         size: 10,
         price: 49.99
       }
-    ]
+    ],
+    totalPrice: null
   };
 
   render() {
-    const shoes = this.state.shoes.map((shoe, index) => {
-      return (
-        <Shoe
-          key={index}
-          name={shoe.name}
-          brand={shoe.brand}
-          color={shoe.colors}
-          size={shoe.size}
-        />
-      );
-    });
-    return shoes;
+    return <div>Basket</div>;
   }
 }
 
-export default Shoes;
+export default Basket;

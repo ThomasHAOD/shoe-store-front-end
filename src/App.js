@@ -4,6 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import Layout from "./hoc/Layout/Layout";
 import Shoes from "./containers/Shoes/Shoes";
 import SelectedShoe from "./containers/SelectedShoe/SelectedShoe";
+import Basket from "./containers/Basket/Basket";
+import Account from "./containers/Account/Account";
 
 function App() {
   return (
@@ -12,7 +14,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Shoes} />
           <Route path="/selected-shoe" component={SelectedShoe} />
-          <Route />
+          <Route path="/basket" component={Basket} />
+          <Route path="/account" component={Account} />
         </Switch>
       </Layout>
     </div>
