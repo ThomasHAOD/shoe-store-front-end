@@ -1,7 +1,9 @@
 import React from "react";
 
+import Toolbar from "./components/Navigation/Toolbar/Toolbar";
+
 function App() {
-  return <h1>Shoe Store</h1>;
+  return <Toolbar />;
 }
 
 export default App;
