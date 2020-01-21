@@ -4,6 +4,7 @@
   box-sizing: border-box;
   display: block;
   width: 100%;
+  background: #8f5c2c;
 }
 
 .NavigationItem a {
