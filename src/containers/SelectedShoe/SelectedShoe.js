@@ -10,7 +10,7 @@ import * as actions from "../../store/actions/index";
 
 export class SelectedShoe extends Component {
   onAddToBasket = () => {
-    this.props.onShoeAdded(this.state.shoe);
+    this.props.onShoeAdded(this.props.shoe);
     this.props.history.push("/");
   };
 
