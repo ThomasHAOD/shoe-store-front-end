@@ -23,7 +23,7 @@ export class Basket extends Component {
 
     return (
       <div>
-        <hi>Basket</hi>
+        <h1>Basket</h1>
         {shoes}
       </div>
     );
