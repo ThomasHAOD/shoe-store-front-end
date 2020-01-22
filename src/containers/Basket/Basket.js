@@ -20,7 +20,7 @@ export class Basket extends Component {
     return (
       <div>
         <h1>Basket</h1>
-        <h2>Total Price: £{this.props.price}</h2>
+        <h2>Total Price: £{this.props.price.toFixed(2)}</h2>
         {shoes}
       </div>
     );

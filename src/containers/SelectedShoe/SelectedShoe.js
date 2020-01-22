@@ -17,21 +17,31 @@ export class SelectedShoe extends Component {
   render() {
     console.log(this.props);
 
+    let shoe = <h1>No Shoe Selected</h1>;
+
+    if (this.props.shoe) {
+      shoe = (
+        <DetailedShoe
+          name={this.props.shoe.name}
+          brand={this.props.shoe.brand}
+          color={this.props.shoe.color}
+          size={this.props.shoe.size}
+          reviewScore={this.props.shoe.reviewScore}
+          mens={this.props.shoe.mens}
+          womens={this.props.shoe.womens}
+          kids={this.props.shoe.kids}
+        />
+      );
+    }
+
     return (
       <div className={classes.SelectedShoe}>
-        <div className={classes.SelectedShoeDetails}>
-          <DetailedShoe
-            name={this.props.shoe.name}
-            brand={this.props.shoe.brand}
-            color={this.props.shoe.color}
-            size={this.props.shoe.size}
-            reviewScore={this.props.shoe.reviewScore}
-            mens={this.props.shoe.mens}
-            womens={this.props.shoe.womens}
-            kids={this.props.shoe.kids}
-          />
-        </div>
-        <Button btnType="Success" clicked={this.onAddToBasket}>
+        <div className={classes.SelectedShoeDetails}>{shoe}</div>
+        <Button
+          btnType="Success"
+          clicked={this.onAddToBasket}
+          disabled={!this.props.shoe}
+        >
           Add To Basket
         </Button>
         <HowDoesItFit />
