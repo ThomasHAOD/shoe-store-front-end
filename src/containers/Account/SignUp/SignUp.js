@@ -3,50 +3,20 @@ import React, { Component } from "react";
 import Button from "../../../components/UI/Button/Button";
 import Input from "../../../components/UI/Input/Input";
 import * as formHelperFunctions from "../../../helpers/forms/formHelperFunctions";
+import * as forms from "../../../helpers/forms/formJSONTemplates";
 
-export class SignIn extends Component {
+export class SignUp extends Component {
   state = {
-    signIn: {
-      name: {
-        elementType: "input",
-        elementConfig: {
-          type: "text",
-          placeholder: "Your Username"
-        },
-        value: "",
-        validation: {
-          required: true,
-          minLength: 5,
-          maxLength: 20
-        },
-        valid: false,
-        touched: false
-      },
-      password: {
-        elementType: "input",
-        elementConfig: {
-          type: "password",
-          placeholder: "Your Password"
-        },
-        value: "",
-        validation: {
-          required: true,
-          minLength: 6,
-          maxLength: 15
-        },
-        valid: false,
-        touched: false
-      }
-    },
+    signUp: forms.signUpForm.signUp,
     formIsValid: false
   };
 
   inputChangedHandler = (event, inputIdentifier) => {
-    const updatedSignIn = {
-      ...this.state.signIn
+    const updatedSignUp = {
+      ...this.state.signUp
     };
     const updatedFormElement = {
-      ...updatedSignIn[inputIdentifier]
+      ...updatedSignUp[inputIdentifier]
     };
     updatedFormElement.value = event.target.value;
     updatedFormElement.valid = formHelperFunctions.checkValidity(
@@ -54,26 +24,26 @@ export class SignIn extends Component {
       updatedFormElement.validation
     );
     updatedFormElement.touched = true;
-    updatedSignIn[inputIdentifier] = updatedFormElement;
+    updatedSignUp[inputIdentifier] = updatedFormElement;
 
     let formIsValid = true;
-    for (let inputIdentifier in updatedSignIn) {
-      formIsValid = updatedSignIn[inputIdentifier].valid && formIsValid;
+    for (let inputIdentifier in updatedSignUp) {
+      formIsValid = updatedSignUp[inputIdentifier].valid && formIsValid;
     }
-    this.setState({ signIn: updatedSignIn, formIsValid: formIsValid });
+    this.setState({ signUp: updatedSignUp, formIsValid: formIsValid });
   };
 
   render() {
     const formElementsArray = [];
-    for (let key in this.state.signIn) {
+    for (let key in this.state.signUp) {
       formElementsArray.push({
         id: key,
-        config: this.state.signIn[key]
+        config: this.state.signUp[key]
       });
     }
 
     let form = (
-      <form onSubmit={this.signInHandler}>
+      <form onSubmit={this.signUpHandler}>
         {formElementsArray.map(formElement => (
           <Input
             key={formElement.id}
@@ -87,18 +57,18 @@ export class SignIn extends Component {
           />
         ))}
         <Button btnType="Success" disabled={!this.state.formIsValid}>
-          SignIn
+          Sign Up
         </Button>
       </form>
     );
 
     return (
       <div>
-        <h2>Sign In</h2>
+        <h2>Sign Up</h2>
         {form}
       </div>
     );
   }
 }
 
-export default SignIn;
+export default SignUp;

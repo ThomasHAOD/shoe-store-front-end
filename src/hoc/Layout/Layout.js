@@ -5,11 +5,13 @@ import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 import Modal from "../../components/UI/Modal/Modal";
 import SignIn from "../../containers/Account/SignIn/SignIn";
+import SignUp from "../../containers/Account/SignUp/SignUp";
 
 class Layout extends Component {
   state = {
     showSideDrawer: false,
-    signingIn: true
+    signingIn: false,
+    signingUp: true
   };
 
   sideDrawerClosedHandler = () => {
@@ -24,6 +26,9 @@ class Layout extends Component {
 
   signInCancelHandler = () => {
     this.setState({ signingIn: false });
+  };
+  signUpCancelHandler = () => {
+    this.setState({ signingUp: false });
   };
 
   render() {
@@ -41,6 +46,12 @@ class Layout extends Component {
           modalClosed={this.signInCancelHandler}
         >
           <SignIn />
+        </Modal>
+        <Modal
+          show={this.state.signingUp}
+          modalClosed={this.signUpCancelHandler}
+        >
+          <SignUp />
         </Modal>
       </Fragment>
     );
