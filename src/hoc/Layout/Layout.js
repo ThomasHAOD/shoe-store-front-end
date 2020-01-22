@@ -3,10 +3,13 @@ import React, { Component, Fragment } from "react";
 import classes from "./Layout.module.css";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
+import Modal from "../../components/UI/Modal/Modal";
+import SignIn from "../../containers/Account/SignIn/SignIn";
 
 class Layout extends Component {
   state = {
-    showSideDrawer: false
+    showSideDrawer: false,
+    signingIn: true
   };
 
   sideDrawerClosedHandler = () => {
@@ -19,6 +22,10 @@ class Layout extends Component {
     });
   };
 
+  signInCancelHandler = () => {
+    this.setState({ signingIn: false });
+  };
+
   render() {
     return (
       <Fragment>
@@ -29,6 +36,12 @@ class Layout extends Component {
           drawerToggleClicked={this.sideDrawerToggleHandler}
         />
         <main className={classes.Content}>{this.props.children}</main>
+        <Modal
+          show={this.state.signingIn}
+          modalClosed={this.signInCancelHandler}
+        >
+          <SignIn />
+        </Modal>
       </Fragment>
     );
   }
