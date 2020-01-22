@@ -19,7 +19,8 @@ export class SelectedShoe extends Component {
       reviewScore: 5,
       mens: true,
       womens: false,
-      kids: true
+      kids: true,
+      price: 49.99
     }
   };
 
