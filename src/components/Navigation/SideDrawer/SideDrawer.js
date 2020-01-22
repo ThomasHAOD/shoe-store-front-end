@@ -17,7 +17,7 @@ const sideDrawer = props => {
       <div className={attachedClasses.join(" ")}>
         <nav>
           <DrawerToggle clicked={props.drawerToggleClicked} />
-          <NavigationItems />
+          <NavigationItems clicked={props.drawerToggleClicked} />
         </nav>
       </div>
     </Fragment>
