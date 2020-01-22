@@ -22,24 +22,28 @@ export class SelectedShoe extends Component {
       kids: true
     }
   };
+
+  onAddToBasket = () => {
+    this.props.onShoeAdded(this.state.shoe);
+    this.props.history.push("/");
+  };
+
   render() {
     return (
       <div className={classes.SelectedShoe}>
         <div className={classes.SelectedShoeDetails}>
           <DetailedShoe
-            name={this.state.name}
-            brand={this.state.brand}
-            color={this.state.color}
-            size={this.state.size}
-            reviewScore={this.state.reviewScore}
-            mens
-            kids
+            name={this.state.shoe.name}
+            brand={this.state.shoe.brand}
+            color={this.state.shoe.color}
+            size={this.state.shoe.size}
+            reviewScore={this.state.shoe.reviewScore}
+            mens={this.state.shoe.mens}
+            womens={this.state.shoe.womens}
+            kids={this.state.shoe.kids}
           />
         </div>
-        <Button
-          btnType="Success"
-          clicked={() => this.props.onShoeAdded(this.state.shoe)}
-        >
+        <Button btnType="Success" clicked={this.onAddToBasket}>
           Add To Basket
         </Button>
         <HowDoesItFit />
