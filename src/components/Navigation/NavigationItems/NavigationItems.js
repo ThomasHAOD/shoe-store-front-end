@@ -12,8 +12,8 @@ const navigationItems = props => {
       <NavigationItem link="/basket" clicked={props.clicked}>
         Basket
       </NavigationItem>
-      <NavigationItem link="/" clicked={props.clicked}>
-        Sign In/Out
+      <NavigationItem link="/" exact clicked={props.clicked}>
+        Store
       </NavigationItem>
     </ul>
   );
