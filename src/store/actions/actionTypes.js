@@ -1,1 +1,4 @@
+export const SET_SHOES = "SET_SHOES";
+export const FETCH_SHOES_FAILED = "FETCH_SHOES_FAILED";
+
 export const ADD_SHOE_TO_BASKET = "ADD_SHOE_TO_BASKET";

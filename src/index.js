@@ -9,13 +9,15 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import basketReducer from "./store/reducers/basket";
+import shoesReducer from "./store/reducers/shoes";
 
 import * as serviceWorker from "./serviceWorker";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  basket: basketReducer
+  basket: basketReducer,
+  shoes: shoesReducer
 });
 
 const store = createStore(
