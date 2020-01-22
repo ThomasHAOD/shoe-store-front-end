@@ -24,9 +24,18 @@ class Layout extends Component {
     });
   };
 
+  signInHandler = () => {
+    this.setState({ signingIn: true });
+  };
+
+  signUpHandler = () => {
+    this.setState({ signingUp: true });
+  };
+
   signInCancelHandler = () => {
     this.setState({ signingIn: false });
   };
+
   signUpCancelHandler = () => {
     this.setState({ signingUp: false });
   };
@@ -34,7 +43,11 @@ class Layout extends Component {
   render() {
     return (
       <Fragment>
-        <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
+        <Toolbar
+          drawerToggleClicked={this.sideDrawerToggleHandler}
+          signIn={this.signInHandler}
+          signUp={this.signUpHandler}
+        />
         <SideDrawer
           open={this.state.showSideDrawer}
           closed={this.sideDrawerClosedHandler}

@@ -11,6 +11,10 @@ const toolbar = props => {
       <nav className={classes.DesktopOnly}>
         <NavigationItems />
       </nav>
+      <ul>
+        <li onClick={props.signIn}>Sign In</li>
+        <li onClick={props.signUp}>Sign Up</li>
+      </ul>
     </header>
   );
 };
