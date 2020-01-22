@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Button from "../../../components/UI/Button/Button";
 import Input from "../../../components/UI/Input/Input";
 import * as formHelperFunctions from "../../../helpers/forms/formHelperFunctions";
-import * as forms from "../../../helpers/forms/formJSONTemplates";
+import * as forms from "../../../helpers/forms/formTemplates";
 
 export class SignUp extends Component {
   state = {

@@ -3,41 +3,11 @@ import React, { Component } from "react";
 import Button from "../../../components/UI/Button/Button";
 import Input from "../../../components/UI/Input/Input";
 import * as formHelperFunctions from "../../../helpers/forms/formHelperFunctions";
+import * as forms from "../../../helpers/forms/formTemplates";
 
 export class SignIn extends Component {
   state = {
-    signIn: {
-      name: {
-        elementType: "input",
-        elementConfig: {
-          type: "text",
-          placeholder: "Your Username"
-        },
-        value: "",
-        validation: {
-          required: true,
-          minLength: 5,
-          maxLength: 20
-        },
-        valid: false,
-        touched: false
-      },
-      password: {
-        elementType: "input",
-        elementConfig: {
-          type: "password",
-          placeholder: "Your Password"
-        },
-        value: "",
-        validation: {
-          required: true,
-          minLength: 6,
-          maxLength: 15
-        },
-        valid: false,
-        touched: false
-      }
-    },
+    signIn: forms.signInForm.signIn,
     formIsValid: false
   };
 
