@@ -1,39 +1,39 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import Shoe from "../../components/Shoe/Shoe";
 
 export class Basket extends Component {
   state = {
-    items: [
-      {
-        name: "Funky Trainer",
-        image: "./placeholer",
-        brand: "Trainer Company",
-        colors: "Black",
-        size: 7,
-        price: 49.99
-      },
-      {
-        name: "Funky Shoe",
-        image: "./placeholer",
-        brand: "Shoe Company",
-        colors: "Red",
-        size: 5,
-        price: 49.99
-      },
-      {
-        name: "Funky Sandal",
-        image: "./placeholer",
-        brand: "Sandal Company",
-        colors: "Brown",
-        size: 10,
-        price: 49.99
-      }
-    ],
     totalPrice: null
   };
 
   render() {
-    return <div>Basket</div>;
+    const shoes = this.props.shoes.map((shoe, index) => {
+      return (
+        <Shoe
+          key={index}
+          name={shoe.name}
+          brand={shoe.brand}
+          color={shoe.colors}
+          size={shoe.size}
+        />
+      );
+    });
+
+    return (
+      <div>
+        <hi>Basket</hi>
+        {shoes}
+      </div>
+    );
   }
 }
 
-export default Basket;
+const mapStateToProps = state => {
+  return {
+    shoes: state.basket.shoes
+  };
+};
+
+export default connect(mapStateToProps)(Basket);
