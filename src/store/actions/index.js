@@ -1,2 +1,2 @@
 export { addShoeToBasket } from "./selectedShoe";
-export { fetchShoes } from "./shoes";
+export { fetchShoes, selectShoe } from "./shoes";

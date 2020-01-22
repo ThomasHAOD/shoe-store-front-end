@@ -11,6 +11,13 @@ export const fetchShoesFailed = () => {
   };
 };
 
+export const selectShoe = shoe => {
+  return {
+    type: actionTypes.SELECT_SHOE,
+    shoe: shoe
+  };
+};
+
 export const fetchShoes = () => {
   return dispatch => {
     axios

@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const shoe = props => {
   return (
     <NavLink to="/selected-shoe">
-      <div className={classes.Shoe}>
+      <div className={classes.Shoe} onClick={() => props.clicked(props.shoe)}>
         <h3>{props.name}</h3>
         <div className={classes.Details}>
           <img src={placeholder} className={classes.Image} />

@@ -26,6 +26,8 @@ export class Shoes extends Component {
             brand={shoe.brand}
             color={shoe.colors}
             size={shoe.size}
+            clicked={this.props.onShoeSelect}
+            shoe={shoe}
           />
         );
       });
@@ -44,7 +46,8 @@ const mapStateToProps = state => {
 
 const dispatchStateToProps = dispatch => {
   return {
-    onFetchShoes: () => dispatch(actions.fetchShoes())
+    onFetchShoes: () => dispatch(actions.fetchShoes()),
+    onShoeSelect: shoe => dispatch(actions.selectShoe(shoe))
   };
 };
 
