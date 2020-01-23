@@ -13,6 +13,8 @@ export class Account extends Component {
           <li>
             Name: {this.props.user.firstName} {this.props.user.lastName}
           </li>
+          <li>E-mail: {this.props.user.email}</li>
+          <li>user_id: {this.props.user.id}</li>
           <li>
             Address: {this.props.user.houseNumber} {this.props.user.street}
           </li>

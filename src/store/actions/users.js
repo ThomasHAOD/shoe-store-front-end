@@ -10,6 +10,7 @@ export const userSignUpInit = () => {
 };
 
 export const userSignUpSuccess = (id, email) => {
+  console.log(id);
   return { type: actionTypes.USER_SIGN_UP_SUCCESS, userId: id, email: email };
 };
 
@@ -28,7 +29,8 @@ export const userSignUp = email => {
       }
     })
       .then(res => {
-        dispatch(userSignUpSuccess(res.data.id, email));
+        console.log(res.data);
+        dispatch(userSignUpSuccess(res.data[0].id, email));
       })
       .catch(err => {
         dispatch(userSignUpFail(err));

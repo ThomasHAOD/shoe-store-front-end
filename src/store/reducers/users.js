@@ -2,8 +2,8 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
-  usernames: null,
   activeUser: {
+    id: "1",
     email: "tam-od@yaya.ya",
     firstName: "Tam",
     lastName: "OD",
@@ -27,6 +27,7 @@ const userSignUpStart = (state, action) => {
 
 const userSignUpSuccess = (state, action) => {
   const newUser = {
+    id: action.userId,
     email: action.email,
     firstName: null,
     lastName: null,
