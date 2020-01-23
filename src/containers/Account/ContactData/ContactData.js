@@ -72,6 +72,7 @@ class ContactData extends Component {
     if (this.props.activeUser) {
       updatedDetails = {
         id: this.props.activeUser.id,
+        email: this.props.activeUser.email,
         firstName: this.state.accountDetailsForm.firstName.value,
         lastName: this.state.accountDetailsForm.lastName.value,
         street: this.state.accountDetailsForm.street.value,

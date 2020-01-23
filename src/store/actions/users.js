@@ -57,7 +57,7 @@ export const userUpdateDetailsFail = error => {
 };
 
 export const userUpdateDetails = details => {
-  const { id, firstName, lastName, street, town, postCode } = details;
+  const { id, email, firstName, lastName, street, town, postCode } = details;
 
   return dispatch => {
     dispatch(userUpdateDetailsStart());
@@ -75,7 +75,7 @@ export const userUpdateDetails = details => {
     })
       .then(res => {
         console.log(res);
-        dispatch(userUpdateDetailsSuccess(details));
+        dispatch(userUpdateDetailsSuccess(id, details));
       })
       .catch(err => {
         console.log(err);

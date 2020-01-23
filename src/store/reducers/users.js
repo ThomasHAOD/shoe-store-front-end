@@ -2,7 +2,15 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
-  activeUser: null,
+  activeUser: {
+    id: null,
+    email: null,
+    firstName: null,
+    lastName: null,
+    street: null,
+    town: null,
+    postCode: null
+  },
   error: false,
   signedIn: false,
   loading: false
@@ -45,13 +53,13 @@ const userUpdateDetailsStart = (state, action) => {
 
 const userUpdateDetailsSuccess = (state, action) => {
   const newUser = {
-    id: action.userId,
-    email: action.email,
-    firstName: action.firstName,
-    lastName: action.lastName,
-    street: action.street,
-    town: action.town,
-    postCode: action.postCode
+    id: action.id,
+    email: action.details.email,
+    firstName: action.details.firstName,
+    lastName: action.details.lastName,
+    street: action.details.street,
+    town: action.details.town,
+    postCode: action.details.postCode
   };
 
   return { ...state, activeUser: newUser };
