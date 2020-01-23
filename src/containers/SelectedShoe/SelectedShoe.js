@@ -12,11 +12,10 @@ export class SelectedShoe extends Component {
   onAddToBasket = () => {
     this.props.onShoeAdded(this.props.shoe);
     this.props.history.push("/");
+    alert("Item added to basket");
   };
 
   render() {
-    console.log(this.props);
-
     let shoe = <h1>No Shoe Selected</h1>;
 
     if (this.props.shoe) {

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import Button from "../../../components/UI/Button/Button";
 import Input from "../../../components/UI/Input/Input";
+import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
+import axios from "axios";
 import * as formHelperFunctions from "../../../helpers/forms/formHelperFunctions";
 import * as forms from "../../../helpers/forms/formTemplates";
 import * as actions from "../../../store/actions/index";
@@ -91,4 +93,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(
+  null,
+  mapDispatchToProps
+)(withErrorHandler(SignUp, axios));

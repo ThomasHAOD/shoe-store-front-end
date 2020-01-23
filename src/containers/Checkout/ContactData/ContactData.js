@@ -6,8 +6,7 @@ import Spinner from "react-bootstrap/Spinner";
 import classes from "./ContactData.module.css";
 import axios from "axios";
 import Input from "../../../components/UI/Input/Input";
-// import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
-import * as actions from "../../../store/actions/index";
+import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
 import * as formTemplates from "../../../helpers/forms/formTemplates";
 import * as formHelpers from "../../../helpers/forms/formHelperFunctions";
 
@@ -115,4 +114,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactData, axios);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(ContactData, axios));
