@@ -9,7 +9,6 @@ import BasketSummary from "../../../containers/Basket/BasketWidget/BasketWidget"
 const toolbar = props => {
   let info = (
     <ul className={classes.Sign}>
-      <li onClick={props.signIn}>Sign In</li>
       <li onClick={props.signUp}>Sign Up</li>
     </ul>
   );

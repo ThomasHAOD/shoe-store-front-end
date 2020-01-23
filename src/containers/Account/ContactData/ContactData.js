@@ -28,8 +28,7 @@ class ContactData extends Component {
     }
     const order = {
       basket: this.props.basket,
-      price: this.props.price,
-      orderData: formData
+      price: this.props.price
     };
 
     // this.props.onPlaceOrder(order);
