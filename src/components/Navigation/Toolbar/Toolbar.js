@@ -3,7 +3,7 @@ import React from "react";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import classes from "./Toolbar.module.css";
 import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
-import BasketSummary from "../../../containers/Basket/BasketSummary/BasketSummary";
+import BasketSummary from "../../../containers/Basket/BasketWidget/BasketWidget";
 
 const toolbar = props => {
   let info = (

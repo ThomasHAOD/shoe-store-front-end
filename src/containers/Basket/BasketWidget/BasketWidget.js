@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import classes from "./BasketSummary.module.css";
+import classes from "./BasketWidget.module.css";
 
 const BasketSummary = props => {
   return (

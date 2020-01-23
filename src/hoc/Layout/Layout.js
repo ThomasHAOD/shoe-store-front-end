@@ -11,7 +11,7 @@ class Layout extends Component {
   state = {
     showSideDrawer: false,
     signingIn: false,
-    signingUp: false
+    signingUp: true
   };
 
   sideDrawerClosedHandler = () => {

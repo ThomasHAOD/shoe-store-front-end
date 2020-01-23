@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Shoe from "../../components/Shoe/Shoe";
+import Button from "../../components/UI/Button/Button";
 
 export class Basket extends Component {
   render() {
@@ -22,6 +24,7 @@ export class Basket extends Component {
         <h1>Basket</h1>
         <h2>Total Price: £{this.props.price.toFixed(2)}</h2>
         {shoes}
+        <Link to="/checkout">Checkout</Link>
       </div>
     );
   }
