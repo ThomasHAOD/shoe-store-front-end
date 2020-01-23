@@ -1,17 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import classes from "./Account.module.css";
 
 export class Account extends Component {
-  state = {
-    user: {
-      firstName: "Tam",
-      lastName: "OD",
-      houseNumber: "1",
-      street: "street street",
-      town: "Edinburgh",
-      postCode: "EH1 1AA"
-    }
-  };
   render() {
     return (
       <div className={classes.AccountDetails}>
@@ -19,17 +11,21 @@ export class Account extends Component {
         <h3>Your Details</h3>
         <ul>
           <li>
-            Name: {this.state.user.firstName} {this.state.user.lastName}
+            Name: {this.props.user.firstName} {this.props.user.lastName}
           </li>
           <li>
-            Address: {this.state.user.houseNumber} {this.state.user.street}
+            Address: {this.props.user.houseNumber} {this.props.user.street}
           </li>
-          <li>{this.state.user.town}</li>
-          <li>{this.state.user.postCode}</li>
+          <li>{this.props.user.town}</li>
+          <li>{this.props.user.postCode}</li>
         </ul>
       </div>
     );
   }
 }
 
-export default Account;
+const mapStateToProps = state => {
+  return { user: state.users.activeUser };
+};
+
+export default connect(mapStateToProps)(Account);

@@ -1,0 +1,27 @@
+.BasketSummary {
+  height: 90%;
+  display: flex;
+  flex-flow: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  min-width: 120px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: 5px;
+  margin-top: 5px 0;
+}
+
+.BasketCount {
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  align-content: center;
+  align-items: center;
+}
+
+.BasketSummary h4 {
+  color: lightblue;
+  font-size: 18px;
+}

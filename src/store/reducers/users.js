@@ -3,7 +3,14 @@ import { updateObject } from "../utility";
 
 const initialState = {
   usernames: null,
-  activeUser: null,
+  activeUser: {
+    firstName: "Tam",
+    lastName: "OD",
+    houseNumber: "1",
+    street: "street street",
+    town: "Edinburgh",
+    postCode: "EH1 1AA"
+  },
   error: false
 };
 
