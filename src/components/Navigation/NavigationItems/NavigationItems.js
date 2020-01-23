@@ -9,9 +9,6 @@ const navigationItems = props => {
       <NavigationItem link="/account" clicked={props.clicked}>
         Account
       </NavigationItem>
-      <NavigationItem link="/basket" clicked={props.clicked}>
-        Basket
-      </NavigationItem>
       <NavigationItem link="/" exact clicked={props.clicked}>
         Store
       </NavigationItem>

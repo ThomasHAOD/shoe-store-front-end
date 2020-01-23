@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Button from "../../../components/UI/Button/Button";
 import Input from "../../../components/UI/Input/Input";
 import * as formHelperFunctions from "../../../helpers/forms/formHelperFunctions";
 import * as forms from "../../../helpers/forms/formTemplates";
+import * as actions from "../../../store/actions/index";
 
 export class SignUp extends Component {
   state = {
@@ -33,6 +35,12 @@ export class SignUp extends Component {
     this.setState({ signUp: updatedSignUp, formIsValid: formIsValid });
   };
 
+  handleSignUp = (event, email) => {
+    event.preventDefault();
+    this.props.onSignUp(email);
+    console.log(email);
+  };
+
   render() {
     const formElementsArray = [];
     for (let key in this.state.signUp) {
@@ -56,7 +64,13 @@ export class SignUp extends Component {
             changed={event => this.inputChangedHandler(event, formElement.id)}
           />
         ))}
-        <Button btnType="Success" disabled={!this.state.formIsValid}>
+        <Button
+          btnType="Success"
+          disabled={!this.state.formIsValid}
+          clicked={event =>
+            this.handleSignUp(event, this.state.signUp.email.value)
+          }
+        >
           Sign Up
         </Button>
       </form>
@@ -71,4 +85,10 @@ export class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignUp: email => dispatch(actions.userSignUp(email))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignUp);
