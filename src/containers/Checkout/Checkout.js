@@ -35,7 +35,7 @@ class Checkout extends Component {
           component={ContactData}
         />
         <Modal show={this.state.ordering} modalClosed={this.orderCancelHandler}>
-          <ContactData purpose="ORDER" />
+          <ContactData purpose="ORDER" close={this.orderCancelHandler} />
         </Modal>
       </div>
     );

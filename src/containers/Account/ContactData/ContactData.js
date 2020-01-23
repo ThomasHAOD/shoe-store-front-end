@@ -32,7 +32,24 @@ class ContactData extends Component {
       orderData: formData
     };
 
-    this.props.onPlaceOrder(order);
+    // this.props.onPlaceOrder(order);
+  };
+
+  onSubmitDetails = () => {
+    let updatedDetails = null;
+    if (this.props.activeUser) {
+      updatedDetails = {
+        id: this.props.activeUser.id,
+        email: this.props.activeUser.email,
+        firstName: this.state.accountDetailsForm.firstName.value,
+        lastName: this.state.accountDetailsForm.lastName.value,
+        street: this.state.accountDetailsForm.street.value,
+        town: this.state.accountDetailsForm.town.value,
+        postCode: this.state.accountDetailsForm.postCode.value
+      };
+    }
+    this.props.onEnterDetails(updatedDetails);
+    this.props.close();
   };
 
   inputChangedHandler = (event, inputIdentifier) => {
@@ -68,18 +85,6 @@ class ContactData extends Component {
         config: this.state.accountDetailsForm[key]
       });
     }
-    let updatedDetails = null;
-    if (this.props.activeUser) {
-      updatedDetails = {
-        id: this.props.activeUser.id,
-        email: this.props.activeUser.email,
-        firstName: this.state.accountDetailsForm.firstName.value,
-        lastName: this.state.accountDetailsForm.lastName.value,
-        street: this.state.accountDetailsForm.street.value,
-        town: this.state.accountDetailsForm.town.value,
-        postCode: this.state.accountDetailsForm.postCode.value
-      };
-    }
 
     let form = (
       <form onSubmit={this.orderHandler}>
@@ -98,11 +103,11 @@ class ContactData extends Component {
         <Button
           btnType="Success"
           disabled={!this.state.formIsValid}
-          clicked={() => this.props.onEnterDetails(updatedDetails)}
+          clicked={this.onSubmitDetails}
         >
           CONTNUE
         </Button>
-        <Button btnType="Danger" clicked={this.props.cancel}>
+        <Button btnType="Danger" clicked={this.props.close}>
           CANCEL
         </Button>
       </form>
