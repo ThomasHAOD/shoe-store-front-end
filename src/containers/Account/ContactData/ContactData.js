@@ -98,9 +98,9 @@ class ContactData extends Component {
         <Button
           btnType="Success"
           disabled={!this.state.formIsValid}
-          clicked={() => this.props.onPlaceOrder(updatedDetails)}
+          clicked={() => this.props.onEnterDetails(updatedDetails)}
         >
-          {this.props.purpose}
+          CONTNUE
         </Button>
         <Button btnType="Danger" clicked={this.props.cancel}>
           CANCEL
@@ -129,7 +129,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onPlaceOrder: contactData =>
+    onEnterDetails: contactData =>
       dispatch(actions.userUpdateDetails(contactData))
   };
 };
