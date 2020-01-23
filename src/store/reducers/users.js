@@ -32,7 +32,33 @@ const userSignUpSuccess = (state, action) => {
 };
 
 const userSignUpFail = (state, action) => {
+  return { ...state, error: true };
+};
+
+const userUpdateDetailsInit = (state, action) => {
   return { ...state, loading: false };
+};
+
+const userUpdateDetailsStart = (state, action) => {
+  return { ...state, loading: true };
+};
+
+const userUpdateDetailsSuccess = (state, action) => {
+  const newUser = {
+    id: action.userId,
+    email: action.email,
+    firstName: action.firstName,
+    lastName: action.lastName,
+    street: action.street,
+    town: action.town,
+    postCode: action.postCode
+  };
+
+  return { ...state, activeUser: newUser };
+};
+
+const userUpdateDetailsFail = (state, action) => {
+  return { ...state, error: true };
 };
 
 const reducer = (state = initialState, action) => {
@@ -45,6 +71,14 @@ const reducer = (state = initialState, action) => {
       return userSignUpSuccess(state, action);
     case actionTypes.USER_SIGN_UP_FAIL:
       return userSignUpFail(state, action);
+    case actionTypes.USER_UPDATE_DETAILS_INIT:
+      return userUpdateDetailsInit(state, action);
+    case actionTypes.USER_UPDATE_DETAILS_START:
+      return userUpdateDetailsStart(state, action);
+    case actionTypes.USER_UPDATE_DETAILS_SUCCESS:
+      return userUpdateDetailsSuccess(state, action);
+    case actionTypes.USER_UPDATE_DETAILS_FAIL:
+      return userUpdateDetailsFail(state, action);
     default:
       return state;
   }

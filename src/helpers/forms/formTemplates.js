@@ -97,31 +97,31 @@ export const detailsForm = {
     valid: false,
     touched: false
   },
-  houseNumber: {
-    elementType: "input",
-    elementConfig: {
-      type: "number",
-      placeholder: "Your House Number"
-    },
-    value: "",
-    validation: {
-      required: true,
-      minLength: 0,
-      maxLength: 5
-    },
-    valid: false,
-    touched: false
-  },
   street: {
     elementType: "input",
     elementConfig: {
       type: "text",
-      placeholder: "Your Street"
+      placeholder: "Your Street Address"
     },
     value: "",
     validation: {
       required: true,
       minLength: 5,
+      maxLength: 20
+    },
+    valid: false,
+    touched: false
+  },
+  town: {
+    elementType: "input",
+    elementConfig: {
+      type: "text",
+      placeholder: "Your Town"
+    },
+    value: "",
+    validation: {
+      required: true,
+      minLength: 2,
       maxLength: 20
     },
     valid: false,

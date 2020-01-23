@@ -10,7 +10,6 @@ export const userSignUpInit = () => {
 };
 
 export const userSignUpSuccess = (id, email) => {
-  console.log(id);
   return { type: actionTypes.USER_SIGN_UP_SUCCESS, userId: id, email: email };
 };
 
@@ -29,10 +28,57 @@ export const userSignUp = email => {
       }
     })
       .then(res => {
-        console.log(res.data);
         dispatch(userSignUpSuccess(res.data[0].id, email));
       })
       .catch(err => {
+        dispatch(userSignUpFail(err));
+      });
+  };
+};
+
+export const userUpdateDetailsStart = () => {
+  return { type: actionTypes.USER_UPDATE_DETAILS_START };
+};
+
+export const userUpdateDetailsInit = () => {
+  return { type: actionTypes.USER_UPDATE_DETAILS_INIT };
+};
+
+export const userUpdateDetailsSuccess = (id, details) => {
+  return {
+    type: actionTypes.USER_UPDATE_DETAILS_SUCCESS,
+    id: id,
+    details: details
+  };
+};
+
+export const userUpdateDetailsFail = error => {
+  return { type: actionTypes.USER_UPDATE_DETAILS_FAIL, error: error };
+};
+
+export const userUpdateDetails = details => {
+  const { id, firstName, lastName, street, town, postCode } = details;
+
+  return dispatch => {
+    dispatch(userUpdateDetailsStart());
+    axios({
+      method: "put",
+      url: `http://localhost:8000/users/${id}`,
+      data: {
+        id: id,
+        firstName: firstName,
+        lastName: lastName,
+        street: street,
+        town: town,
+        postCode: postCode
+      }
+    })
+      .then(res => {
+        console.log(res);
+        dispatch(userUpdateDetailsSuccess(details));
+      })
+      .catch(err => {
+        console.log(err);
         dispatch(userSignUpFail(err));
       });
   };

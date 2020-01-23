@@ -7,6 +7,7 @@ import classes from "./ContactData.module.css";
 import axios from "axios";
 import Input from "../../../components/UI/Input/Input";
 import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
+import * as actions from "../../../store/actions/index";
 import * as formTemplates from "../../../helpers/forms/formTemplates";
 import * as formHelpers from "../../../helpers/forms/formHelperFunctions";
 
@@ -67,6 +68,18 @@ class ContactData extends Component {
         config: this.state.accountDetailsForm[key]
       });
     }
+    let updatedDetails = null;
+    if (this.props.activeUser) {
+      updatedDetails = {
+        id: this.props.activeUser.id,
+        firstName: this.state.accountDetailsForm.firstName.value,
+        lastName: this.state.accountDetailsForm.lastName.value,
+        street: this.state.accountDetailsForm.street.value,
+        town: this.state.accountDetailsForm.town.value,
+        postCode: this.state.accountDetailsForm.postCode.value
+      };
+    }
+
     let form = (
       <form onSubmit={this.orderHandler}>
         {formElementsArray.map(formElement => (
@@ -81,8 +94,12 @@ class ContactData extends Component {
             changed={event => this.inputChangedHandler(event, formElement.id)}
           />
         ))}
-        <Button btnType="Success" disabled={!this.state.formIsValid}>
-          ORDER
+        <Button
+          btnType="Success"
+          disabled={!this.state.formIsValid}
+          clicked={() => this.props.onPlaceOrder(updatedDetails)}
+        >
+          {this.props.purpose}
         </Button>
         <Button btnType="Danger" clicked={this.props.cancel}>
           CANCEL
@@ -104,13 +121,15 @@ class ContactData extends Component {
 const mapStateToProps = state => {
   return {
     basket: state.basket.shoes,
-    price: state.basket.totalPrice
+    price: state.basket.totalPrice,
+    activeUser: state.users.activeUser
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    // onPlaceOrder: orderData => dispatch(actions.purchaseBurger(orderData))
+    onPlaceOrder: contactData =>
+      dispatch(actions.userUpdateDetails(contactData))
   };
 };
 

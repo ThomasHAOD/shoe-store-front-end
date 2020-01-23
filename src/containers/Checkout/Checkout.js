@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-import ContactData from "./ContactData/ContactData";
+import ContactData from "../Account/ContactData/ContactData";
 import * as actions from "../../store/actions/index";
 
 import OrderSummary from "../../components/Order/OrderSummary/OrderSummary";
@@ -35,7 +35,7 @@ class Checkout extends Component {
           component={ContactData}
         />
         <Modal show={this.state.ordering} modalClosed={this.orderCancelHandler}>
-          <ContactData />
+          <ContactData purpose="ORDER" />
         </Modal>
       </div>
     );
