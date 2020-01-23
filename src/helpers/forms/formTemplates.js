@@ -1,16 +1,15 @@
 export const signInForm = {
   signIn: {
-    name: {
+    email: {
       elementType: "input",
       elementConfig: {
-        type: "text",
-        placeholder: "Your Username"
+        type: "email",
+        placeholder: "Your E-Mail"
       },
       value: "",
       validation: {
         required: true,
-        minLength: 5,
-        maxLength: 20
+        isEmail: true
       },
       valid: false,
       touched: false
@@ -35,17 +34,16 @@ export const signInForm = {
 
 export const signUpForm = {
   signUp: {
-    name: {
+    email: {
       elementType: "input",
       elementConfig: {
-        type: "text",
-        placeholder: "Your Username"
+        type: "email",
+        placeholder: "Your E-Mail"
       },
       value: "",
       validation: {
         required: true,
-        minLength: 5,
-        maxLength: 20
+        isEmail: true
       },
       valid: false,
       touched: false
