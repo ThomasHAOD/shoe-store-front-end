@@ -85,6 +85,9 @@ class ContactData extends Component {
         <Button btnType="Success" disabled={!this.state.formIsValid}>
           ORDER
         </Button>
+        <Button btnType="Danger" clicked={this.props.cancel}>
+          CANCEL
+        </Button>
       </form>
     );
     if (this.props.loading) {

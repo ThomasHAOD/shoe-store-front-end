@@ -6,33 +6,40 @@ import ContactData from "./ContactData/ContactData";
 import * as actions from "../../store/actions/index";
 
 import OrderSummary from "../../components/Order/OrderSummary/OrderSummary";
+import Modal from "../../components/UI/Modal/Modal";
+import Button from "../../components/UI/Button/Button";
 
 class Checkout extends Component {
-  checkoutCancelledHandler = () => {
-    this.props.history.goBack();
+  state = { ordering: false };
+
+  placeOrderHandler = () => {
+    if (this.props.basket[0]) this.setState({ ordering: true });
   };
 
-  checkoutContinuedHandler = () => {
-    this.props.history.replace("/checkout/contact-data");
+  orderCancelHandler = () => {
+    this.setState({ ordering: false });
   };
 
   render() {
-    // let summary = <Redirect to="/" />;
-    // if (this.props.ings) {
-    //   const purchasedRedirect = this.props.purchased ? (
-    //     <Redirect to="/" />
-    //   ) : null;
     const summary = (
       <div>
-        {/* {purchasedRedirect} */}
-        <OrderSummary />
+        <OrderSummary
+          shoes={this.props.basket}
+          cancel={this.orderCancelHandler}
+        />
+        <Button btnType="Success" clicked={this.placeOrderHandler}>
+          Place Order
+        </Button>
         <Route
           path={this.props.match.path + "/contact-data"}
           component={ContactData}
         />
+        <Modal show={this.state.ordering} modalClosed={this.orderCancelHandler}>
+          <ContactData />
+        </Modal>
       </div>
     );
-    // }
+
     return summary;
   }
 }

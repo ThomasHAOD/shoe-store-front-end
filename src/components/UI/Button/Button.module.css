@@ -9,12 +9,6 @@
   text-align: inherit;
 }
 
-.Button:first-of-type {
-  margin-left: 0;
-  padding-left: 0;
-  text-align: center;
-}
-
 .Button:disabled {
   color: #ccc;
   cursor: not-allowed;
