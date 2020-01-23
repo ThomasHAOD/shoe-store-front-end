@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import NavigationItems from "../NavigationItems/NavigationItems";
 import classes from "./Toolbar.module.css";
@@ -13,7 +14,7 @@ const toolbar = props => {
     </ul>
   );
 
-  if (true) {
+  if (props.signedIn) {
     info = <BasketSummary />;
   }
   return (
@@ -27,4 +28,10 @@ const toolbar = props => {
   );
 };
 
-export default toolbar;
+const mapStateToProps = state => {
+  return {
+    signedIn: state.users.signedIn
+  };
+};
+
+export default connect(mapStateToProps)(toolbar);

@@ -2,23 +2,14 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
-  activeUser: {
-    id: "1",
-    email: "tam-od@yaya.ya",
-    firstName: "Tam",
-    lastName: "OD",
-    houseNumber: "1",
-    street: "street street",
-    town: "Edinburgh",
-    postCode: "EH1 1AA"
-  },
+  activeUser: null,
   error: false,
   signedIn: false,
   loading: false
 };
 
 const userSignUpInit = (state, action) => {
-  return { ...state, signedIn: false };
+  return { ...state, loading: false };
 };
 
 const userSignUpStart = (state, action) => {
@@ -37,7 +28,7 @@ const userSignUpSuccess = (state, action) => {
     postCode: null
   };
 
-  return { ...state, activeUser: newUser };
+  return { ...state, activeUser: newUser, signedIn: true };
 };
 
 const userSignUpFail = (state, action) => {
