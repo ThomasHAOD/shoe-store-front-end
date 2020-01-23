@@ -19,13 +19,15 @@ export const userSignUpFail = error => {
 
 export const userSignUp = email => {
   return dispatch => {
-    console.log("[action usersignup]" + email);
-
     dispatch(userSignUpStart());
-    axios
-      .post("http://localhost:8000/users", email)
+    axios({
+      method: "post",
+      url: "http://localhost:8000/users",
+      data: {
+        email: email
+      }
+    })
       .then(res => {
-        console.log(res);
         dispatch(userSignUpSuccess(res.data.id, email));
       })
       .catch(err => {
