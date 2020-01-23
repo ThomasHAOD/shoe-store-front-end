@@ -10,7 +10,11 @@ const shoe = props => {
       <div className={classes.Shoe} onClick={() => props.clicked(props.shoe)}>
         <h3>{props.name}</h3>
         <div className={classes.Details}>
-          <img src={placeholder} className={classes.Image} />
+          <img
+            src={placeholder}
+            className={classes.Image}
+            alt="placeholder shoe"
+          />
           <div>
             <ul className={classes.List}>
               <li>Brand: {props.brand}</li>

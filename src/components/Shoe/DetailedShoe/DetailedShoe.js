@@ -8,7 +8,11 @@ const detailedShoe = props => {
     <div className={classes.Shoe}>
       <h1>{props.name}</h1>
       <div className={classes.Details}>
-        <img src={placeholder} className={classes.Image} />
+        <img
+          src={placeholder}
+          className={classes.Image}
+          alt="placeholder shoe"
+        />
         <div>
           <ul className={classes.List}>
             <li>Brand: {props.brand}</li>
