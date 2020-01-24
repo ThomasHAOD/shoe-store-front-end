@@ -15,7 +15,7 @@ function App() {
         <Switch>
           <Route path="/checkout" component={Checkout} />
           <Route path="/selected-shoe" component={SelectedShoe} />
-          <Route path="/basket" component={Basket} />
+          {/* <Route path="/basket" component={Basket} /> */}
           <Route path="/account" component={Account} />
           <Route path="/" exact component={Shoes} />
         </Switch>

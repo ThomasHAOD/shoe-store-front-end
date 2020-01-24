@@ -14,7 +14,7 @@ const toolbar = props => {
   );
 
   if (props.signedIn) {
-    info = <BasketSummary />;
+    info = <BasketSummary showBasket={props.showBasket} />;
   }
   return (
     <header className={classes.Toolbar}>

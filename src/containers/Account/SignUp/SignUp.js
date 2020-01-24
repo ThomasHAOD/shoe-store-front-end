@@ -40,7 +40,7 @@ export class SignUp extends Component {
   handleSignUp = (event, email) => {
     event.preventDefault();
     this.props.onSignUp(email);
-    console.log(email);
+    this.props.close();
   };
 
   render() {

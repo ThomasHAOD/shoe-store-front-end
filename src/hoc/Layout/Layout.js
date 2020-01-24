@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
 import classes from "./Layout.module.css";
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
@@ -6,12 +7,14 @@ import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 import Modal from "../../components/UI/Modal/Modal";
 import SignIn from "../../containers/Account/SignIn/SignIn";
 import SignUp from "../../containers/Account/SignUp/SignUp";
+import { Basket } from "../../containers/Basket/Basket";
 
 class Layout extends Component {
   state = {
     showSideDrawer: false,
     signingIn: false,
-    signingUp: true
+    signingUp: true,
+    viewBasket: false
   };
 
   sideDrawerClosedHandler = () => {
@@ -40,6 +43,14 @@ class Layout extends Component {
     this.setState({ signingUp: false });
   };
 
+  viewBasketHandler = () => {
+    this.setState({ viewBasket: true });
+  };
+
+  viewBasketCancelHandler = () => {
+    this.setState({ viewBasket: false });
+  };
+
   render() {
     return (
       <Fragment>
@@ -47,6 +58,7 @@ class Layout extends Component {
           drawerToggleClicked={this.sideDrawerToggleHandler}
           signIn={this.signInHandler}
           signUp={this.signUpHandler}
+          showBasket={this.viewBasketHandler}
         />
         <SideDrawer
           open={this.state.showSideDrawer}
@@ -64,11 +76,28 @@ class Layout extends Component {
           show={this.state.signingUp}
           modalClosed={this.signUpCancelHandler}
         >
-          <SignUp />
+          <SignUp close={this.signUpCancelHandler} />
+        </Modal>
+        <Modal
+          show={this.state.viewBasket}
+          modalClosed={this.viewBasketCancelHandler}
+        >
+          <Basket
+            close={this.viewBasketCancelHandler}
+            shoes={this.props.basket}
+            price={this.props.price}
+          />
         </Modal>
       </Fragment>
     );
   }
 }
 
-export default Layout;
+const mapStateToProps = state => {
+  return {
+    basket: state.basket.shoes,
+    price: state.basket.totalPrice
+  };
+};
+
+export default connect(mapStateToProps)(Layout);
