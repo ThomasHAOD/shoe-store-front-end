@@ -28,6 +28,7 @@ export const updateShoeStock = (state, action) => {
       return shoe;
     }
   });
+  console.log(`[shoes reducer]${updatedShoes}`);
   return { ...state, shoes: updatedShoes };
 };
 
@@ -40,6 +41,8 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SELECT_SHOE:
       return selectShoe(state, action);
     case actionTypes.ADD_SHOE_TO_BASKET_SUCCESS:
+      return updateShoeStock(state, action);
+    case actionTypes.REMOVE_SHOE_FROM_BASKET_SUCCESS:
       return updateShoeStock(state, action);
     default:
       return state;

@@ -52,8 +52,13 @@ export const removeShoeFromBasketFail = error => {
   };
 };
 
-export const removeShoeFromBasketSuccess = index => {
-  return { type: actionTypes.REMOVE_SHOE_FROM_BASKET_SUCCESS, index: index };
+export const removeShoeFromBasketSuccess = (shoe, index, newStockLevel) => {
+  return {
+    type: actionTypes.REMOVE_SHOE_FROM_BASKET_SUCCESS,
+    shoe: shoe,
+    index: index,
+    newStockLevel
+  };
 };
 
 export const removeShoeFromBasketInit = () => {
@@ -78,7 +83,7 @@ export const removeShoeFromBasket = (shoe, index) => {
       .then(res => {
         console.log(res);
 
-        dispatch(removeShoeFromBasketSuccess(index));
+        dispatch(removeShoeFromBasketSuccess(shoe, index, res.data[0].stock));
       })
       .catch(err => {
         removeShoeFromBasketFail(err);

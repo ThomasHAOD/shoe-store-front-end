@@ -21,7 +21,7 @@ const removeShoeFromBasketSuccess = (state, action) => {
   const updatedShoes = state.shoes.filter(
     (shoe, index) => index !== action.index
   );
-  console.log(updatedShoes);
+  console.log(`[basket reducer]${updatedShoes}`);
 
   const updatedState = {
     shoes: updatedShoes,
