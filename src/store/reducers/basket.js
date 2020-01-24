@@ -27,7 +27,6 @@ const addShoeToBasketSuccess = (state, action) => {
 
 const removeShoeFromBasketSuccess = (state, action) => {
   const updatedShoe = { ...action.shoe, stock: action.newStockLevel };
-  console.log(state.shoes);
   const updatedShoes = state.shoes
     .filter((shoe, index) => index !== action.index)
     .map(shoe => {
@@ -42,7 +41,6 @@ const removeShoeFromBasketSuccess = (state, action) => {
     shoes: updatedShoes,
     totalPrice: state.totalPrice - action.shoe.price
   };
-  console.log(updatedState);
   return updatedState;
 };
 

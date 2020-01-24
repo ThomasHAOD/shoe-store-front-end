@@ -39,7 +39,15 @@ class Checkout extends Component {
 
     if (this.props.userDetails.street) {
       orderOption = (
-        <Button btnType="Success" clicked={this.placeOrderHandler}>
+        <Button
+          btnType="Success"
+          clicked={() =>
+            this.props.onOrderComplete(
+              this.props.basket,
+              this.props.userDetails.id
+            )
+          }
+        >
           Place Order
         </Button>
       );
@@ -75,9 +83,16 @@ class Checkout extends Component {
 const mapStateToProps = state => {
   return {
     basket: state.basket.shoes,
-    userDetails: state.users.activeUser
-    // purchased: state.order.purchased
+    userDetails: state.users.activeUser,
+    purchased: state.orders.purchased
   };
 };
 
-export default connect(mapStateToProps)(Checkout);
+const mapDispatchToProps = dispatch => {
+  return {
+    onOrderComplete: (basket, userId) =>
+      dispatch(actions.completeOrder(basket, userId))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
