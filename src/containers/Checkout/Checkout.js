@@ -10,7 +10,7 @@ import Modal from "../../components/UI/Modal/Modal";
 import Button from "../../components/UI/Button/Button";
 
 class Checkout extends Component {
-  state = { ordering: false };
+  state = { ordering: false, enteringDetails: false };
 
   placeOrderHandler = () => {
     if (this.props.basket[0]) this.setState({ ordering: true });
@@ -19,23 +19,41 @@ class Checkout extends Component {
   orderCancelHandler = () => {
     this.setState({ ordering: false });
   };
+  enterDetailsHandler = () => {
+    this.setState({ enteringDetails: true });
+  };
+
+  enterDetailsCancelHandler = () => {
+    this.setState({ enteringDetails: false });
+  };
 
   render() {
+    let orderOption = (
+      <Button btnType="Success" clicked={this.enterDetailsHandler}>
+        Enter Details
+      </Button>
+    );
+    if (this.props.userDetails.street) {
+      orderOption = (
+        <Button btnType="Success" clicked={this.placeOrderHandler}>
+          Place Order
+        </Button>
+      );
+    }
+
     const summary = (
       <div>
         <OrderSummary
           shoes={this.props.basket}
           cancel={this.orderCancelHandler}
         />
-        <Button btnType="Success" clicked={this.placeOrderHandler}>
-          Place Order
-        </Button>
-        <Route
-          path={this.props.match.path + "/contact-data"}
-          component={ContactData}
-        />
-        <Modal show={this.state.ordering} modalClosed={this.orderCancelHandler}>
-          <ContactData close={this.orderCancelHandler} />
+        {orderOption}
+
+        <Modal
+          show={this.state.enteringDetails}
+          modalClosed={this.enterDetailsCancelHandler}
+        >
+          <ContactData close={this.enterDetailsCancelHandler} />
         </Modal>
       </div>
     );
@@ -46,7 +64,8 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
   return {
-    basket: state.basket.shoes
+    basket: state.basket.shoes,
+    userDetails: state.users.activeUser
     // purchased: state.order.purchased
   };
 };

@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Shoe from "../../components/Shoe/Shoe";
 import Button from "../../components/UI/Button/Button";
+import classes from "./Basket.module.css";
 
 export const Basket = props => {
   let shoes = <p>Your bakset is empty!</p>;
@@ -25,9 +27,9 @@ export const Basket = props => {
       <h2>Total Price: £{props.price.toFixed(2)}</h2>
       {shoes}
 
-      <Button clicked={() => {}} btnType="Success">
+      <Link to="/checkout" onClick={props.close} className={classes.Checkout}>
         CHECKOUT
-      </Button>
+      </Link>
       <Button clicked={props.close} btnType="Danger">
         CANCEL
       </Button>
