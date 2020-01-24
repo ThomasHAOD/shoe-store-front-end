@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 
 import ContactData from "../Account/ContactData/ContactData";
 import * as actions from "../../store/actions/index";
+import contactDetails from "../Account/ContactDetails/ContactDetails";
 
 import OrderSummary from "../../components/Order/OrderSummary/OrderSummary";
 import Modal from "../../components/UI/Modal/Modal";
 import Button from "../../components/UI/Button/Button";
+import ContactDetails from "../Account/ContactDetails/ContactDetails";
 
 class Checkout extends Component {
   state = { ordering: false, enteringDetails: false };
@@ -33,11 +35,18 @@ class Checkout extends Component {
         Enter Details
       </Button>
     );
+    let contactDetails = null;
+
     if (this.props.userDetails.street) {
       orderOption = (
         <Button btnType="Success" clicked={this.placeOrderHandler}>
           Place Order
         </Button>
+      );
+      contactDetails = (
+        <ul>
+          <ContactDetails user={this.props.userDetails} />
+        </ul>
       );
     }
 
@@ -47,6 +56,7 @@ class Checkout extends Component {
           shoes={this.props.basket}
           cancel={this.orderCancelHandler}
         />
+        {contactDetails}
         {orderOption}
 
         <Modal

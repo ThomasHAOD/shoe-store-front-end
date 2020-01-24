@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import classes from "./Account.module.css";
+import ContactDetails from "./ContactDetails/ContactDetails";
 
 export class Account extends Component {
   render() {
@@ -12,15 +13,7 @@ export class Account extends Component {
         <ul>
           <li>E-mail: {this.props.user.email}</li>
           <li>user_id: {this.props.user.id}</li>
-          <li>
-            Name: {this.props.user.firstName} {this.props.user.lastName}
-          </li>
-
-          <li>
-            Address: {this.props.user.houseNumber} {this.props.user.street}
-          </li>
-          <li>{this.props.user.town}</li>
-          <li>{this.props.user.postCode}</li>
+          <ContactDetails user={this.props.user} />
         </ul>
       </div>
     );
