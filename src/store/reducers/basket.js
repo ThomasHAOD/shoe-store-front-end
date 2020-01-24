@@ -8,7 +8,16 @@ const initialState = {
 
 const addShoeToBasketSuccess = (state, action) => {
   const updatedShoe = { ...action.shoe, stock: action.newStockLevel };
-  const updatedShoes = state.shoes.concat(updatedShoe);
+  const updatedShoeAdded = state.shoes.concat(updatedShoe);
+
+  const updatedShoes = updatedShoeAdded.map(shoe => {
+    if (shoe.id === action.shoe.id) {
+      return updatedShoe;
+    } else {
+      return shoe;
+    }
+  });
+
   const updatedState = {
     shoes: updatedShoes,
     totalPrice: state.totalPrice + action.shoe.price
@@ -17,11 +26,17 @@ const addShoeToBasketSuccess = (state, action) => {
 };
 
 const removeShoeFromBasketSuccess = (state, action) => {
+  const updatedShoe = { ...action.shoe, stock: action.newStockLevel };
   console.log(state.shoes);
-  const updatedShoes = state.shoes.filter(
-    (shoe, index) => index !== action.index
-  );
-  console.log(`[basket reducer]${updatedShoes}`);
+  const updatedShoes = state.shoes
+    .filter((shoe, index) => index !== action.index)
+    .map(shoe => {
+      if (shoe.id === action.shoe.id) {
+        return updatedShoe;
+      } else {
+        return shoe;
+      }
+    });
 
   const updatedState = {
     shoes: updatedShoes,
