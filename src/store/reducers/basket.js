@@ -7,7 +7,8 @@ const initialState = {
 };
 
 const addShoeToBasketSuccess = (state, action) => {
-  const updatedShoes = state.shoes.concat(action.shoe);
+  const updatedShoe = { ...action.shoe, stock: action.newStockLevel };
+  const updatedShoes = state.shoes.concat(updatedShoe);
   const updatedState = {
     shoes: updatedShoes,
     totalPrice: state.totalPrice + action.shoe.price
@@ -15,10 +16,27 @@ const addShoeToBasketSuccess = (state, action) => {
   return updateObject(state, updatedState);
 };
 
+const removeShoeFromBasketSuccess = (state, action) => {
+  console.log(state.shoes);
+  const updatedShoes = state.shoes.filter(
+    (shoe, index) => index !== action.index
+  );
+  console.log(updatedShoes);
+
+  const updatedState = {
+    shoes: updatedShoes,
+    totalPrice: state.totalPrice - action.shoe.price
+  };
+  console.log(updatedState);
+  return updatedState;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_SHOE_TO_BASKET_SUCCESS:
       return addShoeToBasketSuccess(state, action);
+    case actionTypes.REMOVE_SHOE_FROM_BASKET_SUCCESS:
+      return removeShoeFromBasketSuccess(state, action);
     default:
       return state;
   }

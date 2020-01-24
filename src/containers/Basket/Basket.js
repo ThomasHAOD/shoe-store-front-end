@@ -10,13 +10,21 @@ export const Basket = props => {
   if (props.shoes[0]) {
     shoes = props.shoes.map((shoe, index) => {
       return (
-        <Shoe
-          key={index}
-          name={shoe.name}
-          brand={shoe.brand}
-          color={shoe.colors}
-          size={shoe.size}
-        />
+        <div>
+          <Shoe
+            key={index}
+            name={shoe.name}
+            brand={shoe.brand}
+            color={shoe.colors}
+            size={shoe.size}
+          />
+          <Button
+            btnType="Danger"
+            clicked={() => props.removeShoeFromBasket(shoe, index)}
+          >
+            REMOVE
+          </Button>
+        </div>
       );
     });
   }

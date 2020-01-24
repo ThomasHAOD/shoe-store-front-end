@@ -19,6 +19,18 @@ const selectShoe = (state, action) => {
   return { ...state, selectedShoe: action.shoe };
 };
 
+export const updateShoeStock = (state, action) => {
+  const updatedShoe = { ...action.shoe, stock: action.newStockLevel };
+  const updatedShoes = state.shoes.map(shoe => {
+    if (shoe.id == action.shoe.id) {
+      return updatedShoe;
+    } else {
+      return shoe;
+    }
+  });
+  return { ...state, shoes: updatedShoes };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_SHOES:
@@ -27,6 +39,8 @@ const reducer = (state = initialState, action) => {
       return fetchShoesFailed(state, action);
     case actionTypes.SELECT_SHOE:
       return selectShoe(state, action);
+    case actionTypes.ADD_SHOE_TO_BASKET_SUCCESS:
+      return updateShoeStock(state, action);
     default:
       return state;
   }

@@ -9,8 +9,12 @@ export const addShoeToBasketFail = error => {
   return { type: actionTypes.ADD_SHOE_TO_BASKET_FAIL, error: error };
 };
 
-export const addShoeToBasketSuccess = () => {
-  return { type: actionTypes.ADD_SHOE_TO_BASKET_SUCCESS };
+export const addShoeToBasketSuccess = (newStockLevel, shoe) => {
+  return {
+    type: actionTypes.ADD_SHOE_TO_BASKET_SUCCESS,
+    newStockLevel: newStockLevel,
+    shoe: shoe
+  };
 };
 export const addShoeToBasketInit = () => {
   return { type: actionTypes.ADD_SHOE_TO_BASKET_INIT };
@@ -18,22 +22,66 @@ export const addShoeToBasketInit = () => {
 
 export const addShoeToBasket = shoe => {
   const id = shoe.id;
-  const newStockLevel = shoe.stock - 1;
+  const newStockLevel = parseInt(shoe.stock) - 1;
   return dispatch => {
     dispatch(addShoeToBasketStart());
     axios({
       method: "put",
-      url: `http://localhost:8000/shoes/${id}`,
+      url: `http://localhost:8000/shoes/${id}/updatebasket`,
       data: {
         id: id,
         newStockLevel: newStockLevel
       }
     })
       .then(res => {
-        dispatch(addShoeToBasketSuccess());
+        dispatch(addShoeToBasketSuccess(res.data[0].stock, shoe));
       })
       .catch(err => {
         addShoeToBasketFail(err);
+      });
+  };
+};
+export const removeShoeFromBasketStart = () => {
+  return { type: actionTypes.REMOVE_SHOE_FROM_BASKET_START };
+};
+
+export const removeShoeFromBasketFail = error => {
+  return {
+    type: actionTypes.REMOVE_SHOE_FROM_BASKET_FAIL,
+    error: error
+  };
+};
+
+export const removeShoeFromBasketSuccess = index => {
+  return { type: actionTypes.REMOVE_SHOE_FROM_BASKET_SUCCESS, index: index };
+};
+
+export const removeShoeFromBasketInit = () => {
+  return { type: actionTypes.REMOVE_SHOE_FROM_BASKET_INIT };
+};
+
+export const removeShoeFromBasket = (shoe, index) => {
+  console.log(shoe, index);
+
+  const id = shoe.id;
+  const newStockLevel = parseInt(shoe.stock) + 1;
+  return dispatch => {
+    dispatch(removeShoeFromBasketStart());
+    axios({
+      method: "put",
+      url: `http://localhost:8000/shoes/${id}/updatebasket`,
+      data: {
+        id: id,
+        newStockLevel: newStockLevel
+      }
+    })
+      .then(res => {
+        console.log(res);
+
+        dispatch(removeShoeFromBasketSuccess(index));
+      })
+      .catch(err => {
+        removeShoeFromBasketFail(err);
       });
   };
 };

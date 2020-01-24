@@ -8,6 +8,7 @@ import Modal from "../../components/UI/Modal/Modal";
 import SignIn from "../../containers/Account/SignIn/SignIn";
 import SignUp from "../../containers/Account/SignUp/SignUp";
 import { Basket } from "../../containers/Basket/Basket";
+import * as actions from "../../store/actions/index";
 
 class Layout extends Component {
   state = {
@@ -86,6 +87,7 @@ class Layout extends Component {
             close={this.viewBasketCancelHandler}
             shoes={this.props.basket}
             price={this.props.price}
+            removeShoeFromBasket={this.props.onRemoveFromBasket}
           />
         </Modal>
       </Fragment>
@@ -100,4 +102,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Layout);
+const mapDispatchToProps = dispatch => {
+  return {
+    onRemoveFromBasket: (shoe, index) =>
+      dispatch(actions.removeShoeFromBasket(shoe, index))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

@@ -39,7 +39,7 @@ export class SelectedShoe extends Component {
         <Button
           btnType="Success"
           clicked={this.onAddToBasket}
-          disabled={!this.props.shoe}
+          disabled={!this.props.shoe || this.props.shoe.stock === 0}
         >
           Add To Basket
         </Button>
