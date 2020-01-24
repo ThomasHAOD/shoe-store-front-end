@@ -6,7 +6,7 @@ const initialState = {
   totalPrice: 0
 };
 
-const addShoeToBasket = (state, action) => {
+const addShoeToBasketSuccess = (state, action) => {
   const updatedShoes = state.shoes.concat(action.shoe);
   const updatedState = {
     shoes: updatedShoes,
@@ -17,8 +17,8 @@ const addShoeToBasket = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_SHOE_TO_BASKET:
-      return addShoeToBasket(state, action);
+    case actionTypes.ADD_SHOE_TO_BASKET_SUCCESS:
+      return addShoeToBasketSuccess(state, action);
     default:
       return state;
   }

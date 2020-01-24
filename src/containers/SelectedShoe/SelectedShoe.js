@@ -25,10 +25,10 @@ export class SelectedShoe extends Component {
           brand={this.props.shoe.brand}
           color={this.props.shoe.color}
           size={this.props.shoe.size}
-          reviewScore={this.props.shoe.reviewScore}
           mens={this.props.shoe.mens}
           womens={this.props.shoe.womens}
           kids={this.props.shoe.kids}
+          stock={this.props.shoe.stock}
         />
       );
     }

@@ -18,7 +18,11 @@ const detailedShoe = props => {
             <li>Brand: {props.brand}</li>
             <li>Color: {props.color}</li>
             <li>Size: {props.size}</li>
-            <li>Review Score: {props.reviewScore}</li>
+            {props.stock < 5 ? (
+              <li style={{ color: "lightsalmon", fontWeight: "bold" }}>
+                Running Low: only {props.stock} left!
+              </li>
+            ) : null}
             {props.mens ? <li>Mens</li> : null}
             {props.womens ? <li>Womens</li> : null}
             {props.kids ? <li>Kids</li> : null}
