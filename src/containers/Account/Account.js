@@ -7,18 +7,24 @@ import PreviousOrders from "../../components/Order/PreviousOrders/PreviousOrders
 
 export class Account extends Component {
   render() {
-    return (
-      <div className={classes.AccountDetails}>
-        <h1>Your Account</h1>
-        <h3>Your Details</h3>
-        <ul>
-          <li>E-mail: {this.props.user.email}</li>
-          <li>user_id: {this.props.user.id}</li>
-          <ContactDetails user={this.props.user} />
-        </ul>
-        <PreviousOrders orders={this.props.previousOrders} />
-      </div>
-    );
+    let details = <h3>Please sign up!</h3>;
+
+    if (this.props.user.id) {
+      details = (
+        <div className={classes.AccountDetails}>
+          <h1>Your Account</h1>
+          <h3>Your Details</h3>
+          <ul>
+            <li>E-mail: {this.props.user.email}</li>
+            <li>user_id: {this.props.user.id}</li>
+            <ContactDetails user={this.props.user} />
+          </ul>
+          <PreviousOrders orders={this.props.previousOrders} />
+        </div>
+      );
+    }
+
+    return details;
   }
 }
 

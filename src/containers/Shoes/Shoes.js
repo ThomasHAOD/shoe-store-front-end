@@ -28,7 +28,7 @@ export class Shoes extends Component {
             key={index}
             name={shoe.name}
             brand={shoe.brand}
-            color={shoe.colors}
+            color={shoe.color}
             size={shoe.size}
             clicked={this.shoeSelectHandler}
             shoe={shoe}
