@@ -25,6 +25,18 @@
   left: 45%;
 }
 
+.ChatBot {
+  height: 100%;
+  align-content: center;
+  text-align: center;
+  left: 60%;
+  position: absolute;
+}
+
+.ChatBot p {
+  margin-bottom: 0;
+}
+
 @media (max-width: 499px) {
   .DesktopOnly {
     display: none;

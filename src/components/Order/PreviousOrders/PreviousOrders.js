@@ -1,12 +1,12 @@
 import React from "react";
 
 const reviousOrders = props => {
-  const orders = props.orders.map(order => {
+  const orders = props.orders.map((order, index) => {
     return (
-      <div>
-        <h3>Order Number</h3>
-        <h3>Total cost</h3>
-        <h3>Date ordered</h3>
+      <div key={index}>
+        <h3>Order Number: {order.id}</h3>
+        <h3>Total cost: {order.totalCost}</h3>
+        <h3>Date ordered: {order.orderDate}</h3>
       </div>
     );
   });
