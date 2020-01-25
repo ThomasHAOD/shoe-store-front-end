@@ -4,8 +4,8 @@ import axios from "axios";
 export const orderStart = () => {
   return { type: actionTypes.ORDER_START };
 };
-export const orderFail = () => {
-  return { type: actionTypes.ORDER_FAIL };
+export const orderFail = error => {
+  return { type: actionTypes.ORDER_FAIL, error: error };
 };
 export const orderSuccess = orderId => {
   return { type: actionTypes.ORDER_SUCCESS, orderId: orderId };
@@ -40,5 +40,37 @@ export const completeOrder = (basket, userId, totalPrice) => {
       .catch(err => {
         orderFail(err);
       });
+  };
+};
+
+export const fecthOrdersStart = () => {
+  return { type: actionTypes.FETCH_ORDERS_START };
+};
+export const fecthOrdersFail = error => {
+  return { type: actionTypes.FETCH_ORDERS_FAIL, error: error };
+};
+export const fecthOrdersSuccess = orders => {
+  return { type: actionTypes.FETCH_ORDERS_SUCCESS, orders: orders };
+};
+
+export const fecthOrdersInit = () => {
+  return { type: actionTypes.FETCH_ORDERS_INIT };
+};
+
+export const fetchOrders = userId => {
+  return dispatch => {
+    console.log(`[fetch start]`);
+
+    dispatch(fecthOrdersStart());
+    axios({
+      method: "get",
+      url: `http://localhost:8000/orders/users/${userId}`
+    })
+      .then(res => {
+        console.log(`[fetch success]` + res.data);
+
+        dispatch(fecthOrdersSuccess(res.data));
+      })
+      .catch(err => console.log(err));
   };
 };

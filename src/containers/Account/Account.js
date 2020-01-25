@@ -1,13 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 
 import classes from "./Account.module.css";
 import ContactDetails from "./ContactDetails/ContactDetails";
 import PreviousOrders from "../../components/Order/PreviousOrders/PreviousOrders";
+import * as actions from "../../store/actions/index";
+import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
+import Button from "../../components/UI/Button/Button";
 
 export class Account extends Component {
   render() {
     let details = <h3>Please sign up!</h3>;
+    console.log(this.props.previousOrders);
+
+    let previousOrders = (
+      <Button
+        btnType="Success"
+        clicked={() => this.props.fetchOrders(this.props.user.id)}
+      >
+        View Previous Orders
+      </Button>
+    );
+    if (this.props.previousOrders[0]) {
+      previousOrders = <PreviousOrders orders={this.props.previousOrders} />;
+    }
 
     if (this.props.user.id) {
       details = (
@@ -19,7 +36,7 @@ export class Account extends Component {
             <li>user_id: {this.props.user.id}</li>
             <ContactDetails user={this.props.user} />
           </ul>
-          <PreviousOrders orders={this.props.previousOrders} />
+          {previousOrders}
         </div>
       );
     }
@@ -35,4 +52,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Account);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchOrders: userId => dispatch(actions.fetchOrders(userId))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(Account, axios));

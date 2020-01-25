@@ -14,10 +14,20 @@ const completeOrder = (state, action) => {
   return updatedState;
 };
 
+const fetchOrders = (state, action) => {
+  const orders = action.orders;
+
+  const updatedState = { ...state, previousOrders: orders };
+
+  return updatedState;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.COMPLETE_ORDER:
       return completeOrder(state, action);
+    case actionTypes.FETCH_ORDERS_SUCCESS:
+      return fetchOrders(state, action);
     default:
       return state;
   }
