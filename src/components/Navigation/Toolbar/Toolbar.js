@@ -8,7 +8,6 @@ import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
 import BasketSummary from "../../Basket/BasketWidget/BasketWidget";
 import Logo from "../../../assets/Golden-shoe-logo.png";
 import Button from "../../UI/Button/Button";
-import ChatBotButton from "../../ChatBotButton/ChatBotButton";
 
 const toolbar = props => {
   let info = (
@@ -25,10 +24,7 @@ const toolbar = props => {
   return (
     <header className={classes.Toolbar}>
       {info}
-      <div className={classes.ChatBot}>
-        <p>Need help?</p>
-        <ChatBotButton />
-      </div>
+
       <Link to="/">
         <img className={classes.Logo} src={Logo} alt="golden-shoe.logo" />
       </Link>

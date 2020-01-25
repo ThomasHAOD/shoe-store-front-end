@@ -3,7 +3,9 @@ import AssistantIcon from "@material-ui/icons/Assistant";
 import classes from "./ChatBotButton.module.css";
 
 const chatBotButton = () => (
-  <AssistantIcon color="black" className={classes.ChatBotButton} />
+  <div className={classes.ChatBot}>
+    <AssistantIcon color="black" className={classes.Icon} />
+  </div>
 );
 
 export default chatBotButton;

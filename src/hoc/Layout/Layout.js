@@ -9,6 +9,7 @@ import SignIn from "../../containers/Account/SignIn/SignIn";
 import SignUp from "../../containers/Account/SignUp/SignUp";
 import { Basket } from "../../components/Basket/Basket";
 import * as actions from "../../store/actions/index";
+import ChatBotButton from "../../components/ChatBotButton/ChatBotButton";
 
 class Layout extends Component {
   state = {
@@ -90,6 +91,7 @@ class Layout extends Component {
             removeShoeFromBasket={this.props.onRemoveFromBasket}
           />
         </Modal>
+        <ChatBotButton />
       </Fragment>
     );
   }
