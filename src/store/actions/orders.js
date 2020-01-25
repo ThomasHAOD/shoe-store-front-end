@@ -15,7 +15,7 @@ export const orderInit = () => {
   return { type: actionTypes.ORDER_INIT };
 };
 
-export const completeOrder = (basket, userId) => {
+export const completeOrder = (basket, userId, totalPrice) => {
   return dispatch => {
     console.log(basket, userId);
 
@@ -23,7 +23,7 @@ export const completeOrder = (basket, userId) => {
     axios({
       method: "post",
       url: "http://localhost:8000/orders",
-      data: { userId: userId }
+      data: { userId: userId, basket: basket, clientPrice: totalPrice }
     })
       .then(res => {
         basket.forEach(shoe => {
@@ -37,12 +37,11 @@ export const completeOrder = (basket, userId) => {
               dispatch(orderFail(err));
             });
         });
-      })
-      .then(res => {
         dispatch(orderSuccess(res.data[0].id));
       })
       .catch(err => {
         orderFail(err);
+        console.log("order error" + err);
       });
   };
 };

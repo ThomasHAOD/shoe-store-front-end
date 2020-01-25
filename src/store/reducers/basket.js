@@ -44,12 +44,21 @@ const removeShoeFromBasketSuccess = (state, action) => {
   return updatedState;
 };
 
+const clearBasket = (state, action) => {
+  return {
+    shoes: [],
+    totalPrice: 0
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_SHOE_TO_BASKET_SUCCESS:
       return addShoeToBasketSuccess(state, action);
     case actionTypes.REMOVE_SHOE_FROM_BASKET_SUCCESS:
       return removeShoeFromBasketSuccess(state, action);
+    case actionTypes.ORDER_SUCCESS:
+      return clearBasket(state, action);
     default:
       return state;
   }

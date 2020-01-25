@@ -38,8 +38,13 @@ class Checkout extends Component {
   };
 
   completeOrderHandler = () => {
-    this.props.onOrderComplete(this.props.basket, this.props.userDetails.id);
+    this.props.onOrderComplete(
+      this.props.basket,
+      this.props.userDetails.id,
+      this.props.totalPrice.toFixed(2)
+    );
     this.orderSuccessHandler();
+    this.props.history.push("/account");
   };
 
   render() {
@@ -94,6 +99,7 @@ class Checkout extends Component {
 const mapStateToProps = state => {
   return {
     basket: state.basket.shoes,
+    totalPrice: state.basket.totalPrice,
     userDetails: state.users.activeUser,
     purchased: state.orders.purchased
   };
@@ -101,8 +107,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderComplete: (basket, userId) =>
-      dispatch(actions.completeOrder(basket, userId))
+    onOrderComplete: (basket, userId, totalPrice) =>
+      dispatch(actions.completeOrder(basket, userId, totalPrice))
   };
 };
 
