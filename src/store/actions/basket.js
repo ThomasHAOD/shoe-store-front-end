@@ -66,8 +66,6 @@ export const removeShoeFromBasketInit = () => {
 };
 
 export const removeShoeFromBasket = (shoe, index) => {
-  console.log(shoe, index);
-
   const id = shoe.id;
   const newStockLevel = parseInt(shoe.stock) + 1;
   return dispatch => {
@@ -81,8 +79,6 @@ export const removeShoeFromBasket = (shoe, index) => {
       }
     })
       .then(res => {
-        console.log(res);
-
         dispatch(removeShoeFromBasketSuccess(shoe, index, res.data[0].stock));
       })
       .catch(err => {

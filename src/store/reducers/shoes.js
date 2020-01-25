@@ -28,7 +28,6 @@ export const updateShoeStock = (state, action) => {
       return shoe;
     }
   });
-  console.log(`[shoes reducer]${updatedShoes}`);
   return { ...state, shoes: updatedShoes };
 };
 

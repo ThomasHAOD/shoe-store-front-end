@@ -5,7 +5,7 @@ import classes from "./SideDrawer.module.css";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
 import Logo from "../../../assets/Golden-shoe-logo.png";
-import BasketWidget from "../../../containers/Basket/BasketWidget/BasketWidget";
+import BasketWidget from "../../Basket/BasketWidget/BasketWidget";
 
 const sideDrawer = props => {
   let attachedClasses = [classes.SideDrawer, classes.Close];

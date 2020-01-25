@@ -6,6 +6,7 @@
 
 .Shoe {
   width: 80%;
+  min-width: 250px;
   display: block;
   flex-flow: column;
   margin: 10px auto;

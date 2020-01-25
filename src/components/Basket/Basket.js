@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Shoe from "../../components/Shoe/Shoe";
-import Button from "../../components/UI/Button/Button";
+import Shoe from "../Shoe/Shoe";
+import Button from "../UI/Button/Button";
 import classes from "./Basket.module.css";
 
 export const Basket = props => {
@@ -10,9 +10,8 @@ export const Basket = props => {
   if (props.shoes[0]) {
     shoes = props.shoes.map((shoe, index) => {
       return (
-        <div>
+        <div key={index}>
           <Shoe
-            key={index}
             name={shoe.name}
             brand={shoe.brand}
             color={shoe.colors}

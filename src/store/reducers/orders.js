@@ -2,7 +2,8 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   orders: [],
-  purchased: false
+  purchased: false,
+  previousOrders: []
 };
 
 const completeOrder = (state, action) => {

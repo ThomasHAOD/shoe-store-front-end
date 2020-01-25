@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import NavigationItems from "../NavigationItems/NavigationItems";
 import classes from "./Toolbar.module.css";
 import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
-import BasketSummary from "../../../containers/Basket/BasketWidget/BasketWidget";
+import BasketSummary from "../../Basket/BasketWidget/BasketWidget";
 import Logo from "../../../assets/Golden-shoe-logo.png";
 import Button from "../../UI/Button/Button";
 
@@ -23,8 +24,9 @@ const toolbar = props => {
   return (
     <header className={classes.Toolbar}>
       {info}
-
-      <img className={classes.Logo} src={Logo} alt="golden-shoe.logo" />
+      <Link to="/">
+        <img className={classes.Logo} src={Logo} alt="golden-shoe.logo" />
+      </Link>
       <nav className={classes.DesktopOnly}>
         <NavigationItems />
       </nav>

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import classes from "./Account.module.css";
 import ContactDetails from "./ContactDetails/ContactDetails";
+import PreviousOrders from "../../components/Order/PreviousOrders/PreviousOrders";
 
 export class Account extends Component {
   render() {
@@ -15,13 +16,17 @@ export class Account extends Component {
           <li>user_id: {this.props.user.id}</li>
           <ContactDetails user={this.props.user} />
         </ul>
+        <PreviousOrders orders={this.props.previousOrders} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { user: state.users.activeUser };
+  return {
+    user: state.users.activeUser,
+    previousOrders: state.orders.previousOrders
+  };
 };
 
 export default connect(mapStateToProps)(Account);

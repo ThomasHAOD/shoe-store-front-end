@@ -17,8 +17,6 @@ export const orderInit = () => {
 
 export const completeOrder = (basket, userId, totalPrice) => {
   return dispatch => {
-    console.log(basket, userId);
-
     dispatch(orderStart());
     axios({
       method: "post",
@@ -41,7 +39,6 @@ export const completeOrder = (basket, userId, totalPrice) => {
       })
       .catch(err => {
         orderFail(err);
-        console.log("order error" + err);
       });
   };
 };

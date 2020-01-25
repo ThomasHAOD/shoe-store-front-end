@@ -74,11 +74,9 @@ export const userUpdateDetails = details => {
       }
     })
       .then(res => {
-        console.log(res);
         dispatch(userUpdateDetailsSuccess(id, details));
       })
       .catch(err => {
-        console.log(err);
         dispatch(userSignUpFail(err));
       });
   };

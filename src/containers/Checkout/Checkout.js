@@ -8,6 +8,8 @@ import Modal from "../../components/UI/Modal/Modal";
 import Button from "../../components/UI/Button/Button";
 import ContactDetails from "../Account/ContactDetails/ContactDetails";
 import OrderSuccess from "../../components/Order/OrderSuccess/OrderSuccess";
+import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
+import axios from "axios";
 
 class Checkout extends Component {
   state = { ordering: false, enteringDetails: false, orderSuccess: false };
@@ -59,7 +61,7 @@ class Checkout extends Component {
         </Button>
       );
       contactDetails = (
-        <ul>
+        <ul style={{ listStyle: "none" }}>
           <ContactDetails user={this.props.userDetails} />
         </ul>
       );
@@ -109,4 +111,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(Checkout, axios));

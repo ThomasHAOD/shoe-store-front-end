@@ -7,7 +7,7 @@ import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 import Modal from "../../components/UI/Modal/Modal";
 import SignIn from "../../containers/Account/SignIn/SignIn";
 import SignUp from "../../containers/Account/SignUp/SignUp";
-import { Basket } from "../../containers/Basket/Basket";
+import { Basket } from "../../components/Basket/Basket";
 import * as actions from "../../store/actions/index";
 
 class Layout extends Component {

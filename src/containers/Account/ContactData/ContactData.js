@@ -17,6 +17,10 @@ class ContactData extends Component {
     formIsValid: false
   };
 
+  orderHandler = event => {
+    event.preventDefault();
+  };
+
   onSubmitDetails = () => {
     let updatedDetails = null;
     if (this.props.activeUser) {
