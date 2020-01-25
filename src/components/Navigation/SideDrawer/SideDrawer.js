@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 
-// import Logo from '../../Logo/Logo';
 import NavigationItems from "../NavigationItems/NavigationItems";
 import classes from "./SideDrawer.module.css";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
 import Logo from "../../../assets/Golden-shoe-logo.png";
+import BasketWidget from "../../../containers/Basket/BasketWidget/BasketWidget";
 
 const sideDrawer = props => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
@@ -18,6 +18,9 @@ const sideDrawer = props => {
       <div className={attachedClasses.join(" ")}>
         <header className={classes.Header}>
           <img src={Logo} alt="golden-shoe-logo" className={classes.Logo} />
+          <div className={classes.Widget}>
+            <BasketWidget />
+          </div>
         </header>
 
         <nav>

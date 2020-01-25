@@ -10,9 +10,10 @@ import OrderSummary from "../../components/Order/OrderSummary/OrderSummary";
 import Modal from "../../components/UI/Modal/Modal";
 import Button from "../../components/UI/Button/Button";
 import ContactDetails from "../Account/ContactDetails/ContactDetails";
+import OrderSuccess from "../../components/Order/OrderSuccess/OrderSuccess";
 
 class Checkout extends Component {
-  state = { ordering: false, enteringDetails: false };
+  state = { ordering: false, enteringDetails: false, orderSuccess: false };
 
   placeOrderHandler = () => {
     if (this.props.basket[0]) this.setState({ ordering: true });
@@ -28,6 +29,18 @@ class Checkout extends Component {
   enterDetailsCancelHandler = () => {
     this.setState({ enteringDetails: false });
   };
+  orderSuccessHandler = () => {
+    this.setState({ orderSuccess: true });
+  };
+
+  orderSuccessCancelHandler = () => {
+    this.setState({ orderSuccess: false });
+  };
+
+  completeOrderHandler = () => {
+    this.props.onOrderComplete(this.props.basket, this.props.userDetails.id);
+    this.orderSuccessHandler();
+  };
 
   render() {
     let orderOption = (
@@ -39,15 +52,7 @@ class Checkout extends Component {
 
     if (this.props.userDetails.street) {
       orderOption = (
-        <Button
-          btnType="Success"
-          clicked={() =>
-            this.props.onOrderComplete(
-              this.props.basket,
-              this.props.userDetails.id
-            )
-          }
-        >
+        <Button btnType="Success" clicked={this.completeOrderHandler}>
           Place Order
         </Button>
       );
@@ -72,6 +77,12 @@ class Checkout extends Component {
           modalClosed={this.enterDetailsCancelHandler}
         >
           <ContactData close={this.enterDetailsCancelHandler} />
+        </Modal>
+        <Modal
+          show={this.state.orderSuccess}
+          modalClosed={this.orderSuccessCancelHandler}
+        >
+          <OrderSuccess />
         </Modal>
       </div>
     );

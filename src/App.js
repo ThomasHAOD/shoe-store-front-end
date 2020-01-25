@@ -10,7 +10,7 @@ import Checkout from "./containers/Checkout/Checkout";
 
 function App() {
   return (
-    <div>
+    <div style={{ minWidth: "350px" }}>
       <Layout>
         <Switch>
           <Route path="/checkout" component={Checkout} />
