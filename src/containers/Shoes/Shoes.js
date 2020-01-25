@@ -7,9 +7,13 @@ import Spinner from "react-bootstrap/Spinner";
 
 export class Shoes extends Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.onFetchShoes();
   }
+
+  shoeSelectHandler = shoe => {
+    this.props.onShoeSelect(shoe);
+    this.props.history.push("/selected-shoe");
+  };
 
   render() {
     let shoes = (
@@ -26,12 +30,11 @@ export class Shoes extends Component {
             brand={shoe.brand}
             color={shoe.colors}
             size={shoe.size}
-            clicked={this.props.onShoeSelect}
+            clicked={this.shoeSelectHandler}
             shoe={shoe}
           />
         );
       });
-      console.log(this.props);
     }
 
     return shoes;
