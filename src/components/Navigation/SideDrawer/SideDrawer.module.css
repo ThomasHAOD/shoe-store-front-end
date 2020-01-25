@@ -12,6 +12,23 @@
   transition: transform 0.3s ease-out;
 }
 
+.SideDrawer nav {
+  margin-top: 70px;
+}
+.Header {
+  height: 56px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #8f3024;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
 @media (min-width: 500px) {
   .SideDrawer {
     display: none;
@@ -27,6 +44,10 @@
 }
 
 .Logo {
-  height: 11%;
-  margin-bottom: 32px;
+  height: 100%;
+}
+
+.Footer {
+  position: fixed;
+  bottom: 15px;
 }
