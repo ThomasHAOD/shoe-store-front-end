@@ -14,13 +14,13 @@ const styles = props => {
       </p>
       <Carousel className={classes.Carousel}>
         <Carousel.Item>
-          <img className="d-block w-100" src={placeholder} />
+          <img className="d-block w-100" alt="placeholder" src={placeholder} />
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100" src={placeholder} />
+          <img className="d-block w-100" alt="placeholder" src={placeholder} />
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100" src={placeholder} />
+          <img className="d-block w-100" alt="placeholder" src={placeholder} />
         </Carousel.Item>
       </Carousel>
     </div>

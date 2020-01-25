@@ -22,7 +22,7 @@ const selectShoe = (state, action) => {
 export const updateShoeStock = (state, action) => {
   const updatedShoe = { ...action.shoe, stock: action.newStockLevel };
   const updatedShoes = state.shoes.map(shoe => {
-    if (shoe.id == action.shoe.id) {
+    if (shoe.id === action.shoe.id) {
       return updatedShoe;
     } else {
       return shoe;

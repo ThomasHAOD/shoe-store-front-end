@@ -17,23 +17,6 @@ class ContactData extends Component {
     formIsValid: false
   };
 
-  orderHandler = event => {
-    event.preventDefault();
-
-    const formData = {};
-    for (let formElementIdentifier in this.state.accountDetailsForm) {
-      formData[formElementIdentifier] = this.state.accountDetailsForm[
-        formElementIdentifier
-      ].value;
-    }
-    const order = {
-      basket: this.props.basket,
-      price: this.props.price
-    };
-
-    // this.props.onPlaceOrder(order);
-  };
-
   onSubmitDetails = () => {
     let updatedDetails = null;
     if (this.props.activeUser) {

@@ -57,7 +57,7 @@ export const userUpdateDetailsFail = error => {
 };
 
 export const userUpdateDetails = details => {
-  const { id, email, firstName, lastName, street, town, postCode } = details;
+  const { id, firstName, lastName, street, town, postCode } = details;
 
   return dispatch => {
     dispatch(userUpdateDetailsStart());

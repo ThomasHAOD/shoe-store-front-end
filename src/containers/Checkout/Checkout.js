@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import ContactData from "../Account/ContactData/ContactData";
 import * as actions from "../../store/actions/index";
-import contactDetails from "../Account/ContactDetails/ContactDetails";
-
 import OrderSummary from "../../components/Order/OrderSummary/OrderSummary";
 import Modal from "../../components/UI/Modal/Modal";
 import Button from "../../components/UI/Button/Button";
