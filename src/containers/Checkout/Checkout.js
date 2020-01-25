@@ -47,11 +47,7 @@ class Checkout extends Component {
   };
 
   render() {
-    let orderOption = (
-      <Button btnType="Success" clicked={this.enterDetailsHandler}>
-        Enter Details
-      </Button>
-    );
+    let orderOption = <p>Add something to your basket to continue!</p>;
     let contactDetails = null;
 
     if (this.props.userDetails.street) {
@@ -64,6 +60,12 @@ class Checkout extends Component {
         <ul style={{ listStyle: "none" }}>
           <ContactDetails user={this.props.userDetails} />
         </ul>
+      );
+    } else if (this.props.basket[0]) {
+      orderOption = (
+        <Button btnType="Success" clicked={this.enterDetailsHandler}>
+          Enter Details
+        </Button>
       );
     }
 

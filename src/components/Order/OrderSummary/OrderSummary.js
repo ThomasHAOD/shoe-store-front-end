@@ -1,13 +1,8 @@
 import React from "react";
 import Shoe from "../../Shoe/Shoe";
-import Spinner from "react-bootstrap/Spinner";
 
 const orderSummary = props => {
-  let shoes = (
-    <Spinner animation="border" role="status">
-      <span className="sr-only">Loading...</span>
-    </Spinner>
-  );
+  let shoes = <p>Add something to your basket to continue!</p>;
   if (props.shoes) {
     shoes = props.shoes.map((shoe, index) => {
       return (
