@@ -29,7 +29,7 @@ const sideDrawer = props => {
           <NavigationItems clicked={props.drawerToggleClicked} />
         </nav>
 
-        {/* <Search /> */}
+        <Search />
         <footer className={classes.Footer}>
           ©2020 AND Digital & Golden Shoe
         </footer>

@@ -37,8 +37,8 @@ export class Shoes extends Component {
         );
       });
     }
-    return <Search />;
-    // return shoes;
+
+    return shoes;
   }
 }
 

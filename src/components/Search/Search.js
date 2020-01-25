@@ -1,6 +1,5 @@
 import React from "react";
 
-import DoneIcon from "@material-ui/icons/Done";
 import { Chip } from "@material-ui/core";
 import classes from "./Search.module.css";
 
@@ -32,7 +31,7 @@ const search = () => {
     );
   });
 
-  const searchedArray = [1];
+  const searchedArray = [1, "Blue", "Reebok"];
 
   let searchedItems = (
     <p>Please hit an option below to add it to your search!</p>
