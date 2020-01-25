@@ -6,6 +6,7 @@ import Backdrop from "../../UI/Backdrop/Backdrop";
 import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
 import Logo from "../../../assets/Golden-shoe-logo.png";
 import BasketWidget from "../../Basket/BasketWidget/BasketWidget";
+import Search from "../../Search/Search";
 
 const sideDrawer = props => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
@@ -27,6 +28,8 @@ const sideDrawer = props => {
           <DrawerToggle clicked={props.drawerToggleClicked} />
           <NavigationItems clicked={props.drawerToggleClicked} />
         </nav>
+
+        {/* <Search /> */}
         <footer className={classes.Footer}>
           ©2020 AND Digital & Golden Shoe
         </footer>

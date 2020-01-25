@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Shoe from "../../components/Shoe/Shoe";
 import * as actions from "../../store/actions/index";
 import Spinner from "react-bootstrap/Spinner";
+import Search from "../../components/Search/Search";
 
 export class Shoes extends Component {
   componentDidMount() {
@@ -36,8 +37,8 @@ export class Shoes extends Component {
         );
       });
     }
-
-    return shoes;
+    return <Search />;
+    // return shoes;
   }
 }
 
