@@ -61,16 +61,12 @@ export const fecthOrdersInit = () => {
 
 export const fetchOrders = userId => {
   return dispatch => {
-    console.log(`[fetch start]`);
-
     dispatch(fecthOrdersStart());
     axios({
       method: "get",
       url: `http://localhost:8000/orders/users/${userId}`
     })
       .then(res => {
-        console.log(`[fetch success]` + res.data);
-
         dispatch(fecthOrdersSuccess(res.data));
       })
       .catch(err => console.log(err));

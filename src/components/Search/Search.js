@@ -10,26 +10,28 @@ const search = () => {
     brand: ["Psych", "Shoes Galore", "Clerks"]
   };
 
-  const searchableCategories = Object.keys(search).map(searchKey => {
-    const category = <h3>{searchKey.toString().toUpperCase()}</h3>;
-    const searchTerms = search[searchKey].map((option, index) => {
+  const searchableCategories = Object.keys(search).map(
+    (searchKey, keyIndex) => {
+      const category = <h3>{searchKey.toString().toUpperCase()}</h3>;
+      const searchTerms = search[searchKey].map((option, index) => {
+        return (
+          <Chip
+            color="primary"
+            //   onDelete={handleDelete}
+            label={option}
+            key={index}
+            category={searchKey}
+          />
+        );
+      });
       return (
-        <Chip
-          color="primary"
-          //   onDelete={handleDelete}
-          label={option}
-          key={index}
-          category={searchKey}
-        />
+        <div className={classes.Category} key={keyIndex}>
+          {category}
+          <section>{searchTerms}</section>
+        </div>
       );
-    });
-    return (
-      <div className={classes.Category}>
-        {category}
-        <section>{searchTerms}</section>
-      </div>
-    );
-  });
+    }
+  );
 
   const searchedArray = [1, "Blue", "Reebok"];
 
