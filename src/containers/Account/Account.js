@@ -12,7 +12,6 @@ import Button from "../../components/UI/Button/Button";
 export class Account extends Component {
   render() {
     let details = <h3>Please sign up!</h3>;
-    console.log(this.props.previousOrders);
 
     let previousOrders = (
       <Button
