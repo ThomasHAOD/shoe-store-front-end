@@ -15,7 +15,7 @@ class Layout extends Component {
   state = {
     showSideDrawer: false,
     signingIn: false,
-    signingUp: true,
+    signingUp: false,
     viewBasket: false
   };
 

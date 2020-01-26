@@ -30,7 +30,9 @@ export const completeOrder = (basket, userId, totalPrice) => {
             url: `http://localhost:8000/shoes-orders`,
             data: { shoeId: shoe.id, orderId: res.data[0].id }
           })
-            .then(res => {})
+            .then(res => {
+              fetchOrders(userId);
+            })
             .catch(err => {
               dispatch(orderFail(err));
             });

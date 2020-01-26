@@ -1,12 +1,16 @@
 import React from "react";
 
-const reviousOrders = props => {
+import classes from "./PreviousOrders.module.css";
+
+const previousOrders = props => {
   const orders = props.orders.map((order, index) => {
+    const orderDate = order.order_date.toString().slice(0, 10);
+
     return (
-      <div key={index}>
+      <div key={index} className={classes.PreviousOrder}>
         <h3>Order Number: {order.id}</h3>
-        <h3>Total cost: {order.totalCost}</h3>
-        <h3>Date ordered: {order.orderDate}</h3>
+        <h3>Total cost: £{order.total_cost}</h3>
+        <h3>Date ordered: {orderDate}</h3>
       </div>
     );
   });
@@ -14,4 +18,4 @@ const reviousOrders = props => {
   return orders;
 };
 
-export default reviousOrders;
+export default previousOrders;

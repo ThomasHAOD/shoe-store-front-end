@@ -23,20 +23,32 @@ export class Account extends Component {
       </Button>
     );
     if (this.props.previousOrders[0]) {
-      previousOrders = <PreviousOrders orders={this.props.previousOrders} />;
+      previousOrders = (
+        <div>
+          <Button
+            btnType="Success"
+            clicked={() => this.props.fetchOrders(this.props.user.id)}
+          >
+            Refresh Orders
+          </Button>
+          <PreviousOrders orders={this.props.previousOrders} />
+        </div>
+      );
     }
 
     if (this.props.user.id) {
       details = (
-        <div className={classes.AccountDetails}>
-          <h1>Your Account</h1>
-          <h3>Your Details</h3>
-          <ul>
-            <li>E-mail: {this.props.user.email}</li>
-            <li>user_id: {this.props.user.id}</li>
-            <ContactDetails user={this.props.user} />
-          </ul>
-          {previousOrders}
+        <div className={classes.Account}>
+          <div className={classes.AccountDetails}>
+            <h1>Your Account</h1>
+            <h3>Your Details</h3>
+            <ul>
+              <li>E-mail: {this.props.user.email}</li>
+              <li>user_id: {this.props.user.id}</li>
+              <ContactDetails user={this.props.user} />
+            </ul>
+          </div>
+          <div className={classes.PreviousOrders}>{previousOrders}</div>
         </div>
       );
     }
